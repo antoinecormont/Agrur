@@ -55,10 +55,10 @@ public class Commande {
 
     public boolean EnCours(){
         if (dateEnvoi == null){
-            return false;
+            return true;
         }
         else{
-            return true;
+            return false;
         }
     }
     
