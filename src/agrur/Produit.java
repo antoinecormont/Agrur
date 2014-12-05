@@ -2,6 +2,6 @@
 package agrur;
 
 
-class Produit {
+public class Produit {
     
 }
