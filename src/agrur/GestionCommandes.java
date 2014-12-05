@@ -14,7 +14,7 @@ public class GestionCommandes {
     private PersistanceSQL donnees;
 
     public GestionCommandes(PersistanceSQL lesDonnees) {
-        GestionCommandes gc = new GestionCommandes();
+        
     }
     
     
