@@ -8,10 +8,10 @@ public class Commande {
     private double prixHT;                              //Prix unitaire du produit négocié avec le client
     private String conditionnement;                     //Type de conditionnement
     private int quantite;                               //Quantité de produits conditionnés commandée
-    private Date dateConditionnement;                   //Date de conditionnement de la commande
+    private String dateConditionnement;                 //Date de conditionnement de la commande
     private Date dateEnvoi;                             //Date d'envoie de la commande
 
-    public Commande(int id, Produit leProduit, double prixHT, String conditionnement, int quantite, Date dateConditionnement) {
+    public Commande(int id, Produit leProduit, double prixHT, String conditionnement, int quantite, String dateConditionnement) {
         this.id = id;
         this.leProduit = leProduit;
         this.prixHT = prixHT;
@@ -41,7 +41,7 @@ public class Commande {
         return quantite;
     }
 
-    public Date getDateConditionnement() {
+    public String getDateConditionnement() {
         return dateConditionnement;
     }
 
@@ -49,7 +49,18 @@ public class Commande {
         return dateEnvoi;
     }
     
-    
+    public void setDateEnvoi(Date dateEnvoi) {
+        this.dateEnvoi = dateEnvoi;
+    }
+
+    public boolean EnCours(){
+        if (dateEnvoi == null){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
     
     
 }
