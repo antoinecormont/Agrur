@@ -9,7 +9,7 @@ public class Commande {
     private String conditionnement;                     //Type de conditionnement
     private int quantite;                               //Quantité de produits conditionnés commandée
     private String dateConditionnement;                 //Date de conditionnement de la commande
-    private Date dateEnvoi;                             //Date d'envoie de la commande
+    private String dateEnvoi;                             //Date d'envoie de la commande
 
     public Commande(int id, Produit leProduit, double prixHT, String conditionnement, int quantite, String dateConditionnement) {
         this.id = id;
@@ -45,11 +45,11 @@ public class Commande {
         return dateConditionnement;
     }
 
-    public Date getDateEnvoi() {
+    public String getDateEnvoi() {
         return dateEnvoi;
     }
     
-    public void setDateEnvoi(Date dateEnvoi) {
+    public void setDateEnvoi(String dateEnvoi) {
         this.dateEnvoi = dateEnvoi;
     }
 
