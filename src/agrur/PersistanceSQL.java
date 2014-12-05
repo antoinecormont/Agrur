@@ -14,13 +14,14 @@ public class PersistanceSQL {
     private String mdp;
     private String serveur;
     private String driver;
+    private Connection con;
     
     public PersistanceSQL(String nomUtilisateur, String motDePasse, String serveurBD, String driverSGBD) throws IOException, SQLException {   
         /*this.nomUtilisateur = "root";
         this.mdp = "";
         this.serveur = "jdbc:mysql://localhost/gestcommande";
         this.driver = "org.gjt.mm.mysql.Driver";*/
-        Connection con = null;
+        con = null;
         try {
             Class.forName(driverSGBD);
             con = DriverManager.getConnection(serveurBD, nomUtilisateur, motDePasse);
@@ -35,10 +36,11 @@ public class PersistanceSQL {
     }
     
     public void RangerDansBase(Object unObjet) throws IOException, SQLException {
-        PersistanceSQL ps = new PersistanceSQL("root", "", "jdbc:mysql://localhost/gestcommande", "org.gjt.mm.mysql.Driver");
+        //PersistanceSQL ps = new PersistanceSQL("root", "", "jdbc:mysql://localhost/gestcommande", "org.gjt.mm.mysql.Driver");
         if (unObjet instanceof Distributeur) {
-            String id = unObjet.getId();
-            String nom = unObjet.getNom();
+            Distributeur unDistributeur = (Distributeur) unObjet;
+            String id = unDistributeur.getId();
+            String nom = unDistributeur.getNom();
              // Ajout dans la table distributeur
             String libRequete = "INSERT INTO distributeur VALUES(?, ?)";
             PreparedStatement requetePrepare = con.prepareStatement(libRequete);
@@ -48,17 +50,18 @@ public class PersistanceSQL {
             System.out.println("Ajout réussi!");
         }
         if (unObjet instanceof Commande) {
-            String id = unObjet.getId();
-            int prix = unObjet.getPrixHT();
-            String condi = getConditionnement();
-            int qté = getQuantite();
-            String dateCondi = getDateConditionnement();
-            String dateEnvoi = getDateEnvoi();
+            Commande uneCommande = (Commande) unObjet;
+            int id = uneCommande.getId();
+            double prix = uneCommande.getPrixHT();
+            String condi = uneCommande.getConditionnement();
+            int qté = uneCommande.getQuantite();
+            String dateCondi = uneCommande.getDateConditionnement();
+            String dateEnvoi = uneCommande.getDateEnvoi();
              // Ajout dans la table commande
             String libRequete = "INSERT INTO commande VALUES(?, ?, ?, ?, ?, ?)";
             PreparedStatement requetePrepare = con.prepareStatement(libRequete);
-            requetePrepare.setString(1, id);
-            requetePrepare.setInt(2, prix);
+            requetePrepare.setInt(1, id);
+            requetePrepare.setDouble(2, prix);
             requetePrepare.setString(3, condi);
             requetePrepare.setInt(4, qté);
             requetePrepare.setString(5, dateCondi);
@@ -67,9 +70,10 @@ public class PersistanceSQL {
             System.out.println("Ajout réussi!");
         }
         if (unObjet instanceof Produit) {
-            String variete = unObjet.getVariete();
-            String type = getType();
-            int calibre = getCalibre();
+            Produit unProduit = (Produit) unObjet;
+            String variete = unProduit.getVariete();
+            String type = unProduit.getType();
+            int calibre = unProduit.getCalibre();
              // Ajout dans la table commande
             String libRequete = "INSERT INTO produit VALUES(?, ?, ?)";
             PreparedStatement requetePrepare = con.prepareStatement(libRequete);
@@ -80,7 +84,7 @@ public class PersistanceSQL {
             System.out.println("Ajout réussi!");
         }
     }
-    public PersistanceSQL ChargerDepuisBase(String id, String nomClasse) {
+    /*public PersistanceSQL ChargerDepuisBase(String id, String nomClasse) {
         
-    }
+    }*/
 }
