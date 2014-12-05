@@ -1,22 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package agrur;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author sio
- */
 public class Distributeur {
-    private String chaine;
+    private String id;
     private String nom;
     private ArrayList<Commande> lesCommandes;
+
+    public Distributeur(String id, String nom, ArrayList<Commande> lesCommandes) {
+        this.id = id;
+        this.nom = nom;
+        this.lesCommandes = lesCommandes;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public ArrayList<Commande> getCommandes() {
+        return lesCommandes;
+    }
+
+   
     
-    
+   
     
 }
