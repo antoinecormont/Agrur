@@ -6,17 +6,10 @@
 
 package agrur;
 
-import java.util.ArrayList;
-
 /**
  *
- * @author sio
+ * @author SYSTEM
  */
-public class Distributeur {
-    private String chaine;
-    private String nom;
-    private ArrayList<Commande> lesCommandes;
-    
-    
+class Commande {
     
 }
