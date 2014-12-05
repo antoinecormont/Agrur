@@ -10,12 +10,21 @@ public class Distributeur {
     public Distributeur(String unId, String unNom) {
         this.id = unId;
         this.nom = unNom;
+        this.lesCommandes = new ArrayList<Commande>();
     }
 
     public String getId() {
         return id;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
+    public void addCommande(Commande uneCommande){
+        this.lesCommandes.add(uneCommande);
+    }
+    
     public ArrayList<Commande> getCommandes() {
         return lesCommandes;
     }
