@@ -1,15 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package agrur;
 
-/**
- *
- * @author SYSTEM
- */
-class Commande {
-    
+import java.util.Date;
+
+public class Commande {
+    private int id;                                     //Identifiant de la commande
+    private Produit leProduit;                          //Produit commandé (catégorie de noix)
+    private double prixHT;                              //Prix unitaire du produit négocié avec le client
+    private String conditionnement;                     //Type de conditionnement
+    private int quantite;                               //Quantité de produits conditionnés commandée
+    private Date dateConditionnement;                   //Date de conditionnement de la commande
+    private Date dateEnvoi;                             //Date d'envoie de la commande
 }
