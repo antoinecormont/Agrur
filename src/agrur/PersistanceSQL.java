@@ -11,6 +11,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/** 
+ * Classe permettant de manipuler les tables distributeur, produit et commande
+ * @author Corentin
+ */
 // Création de la classe
 public class PersistanceSQL {
     
