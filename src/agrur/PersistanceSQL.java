@@ -147,10 +147,11 @@ public class PersistanceSQL {
                     // Ajout dans l'ArrayList
                     lesCommandes.add(laCommande);
                 }
+                leDistributeur = new Distributeur(res.getString(1), res.getString(2), lesCommandes);
             }
             while (res.next()) {
                 // Création de l'instance Distributeur avec l'ArrayList
-                leDistributeur = new Distributeur(res.getString(1), res.getString(2), lesCommandes);
+                leDistributeur = new Distributeur(res.getString(1), res.getString(2));
             }
             return leDistributeur;
         } else {
