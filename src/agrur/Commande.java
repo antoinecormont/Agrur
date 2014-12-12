@@ -49,8 +49,8 @@ public class Commande {
         return dateEnvoi;
     }
     
-    public void setDateEnvoi(String dateEnvoi) {
-        this.dateEnvoi = dateEnvoi;
+    public void setDateEnvoi(String nDateEnvoi) {
+        this.dateEnvoi = nDateEnvoi;
     }
 
     public boolean EnCours(){
