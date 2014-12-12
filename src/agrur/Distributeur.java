@@ -29,8 +29,24 @@ public class Distributeur {
         return lesCommandes;
     }
 
-   
+    public ArrayList<Commande> getCommandesEnCours() {
+        ArrayList<Commande> lesCommandesEnCours = new ArrayList<Commande>();
+        for(Commande uneCommande : lesCommandes){
+            if (uneCommande.EnCours() == true){
+                lesCommandesEnCours.add(uneCommande);
+            }
+        }
+        return lesCommandesEnCours;
+    }
     
-   
+    public ArrayList<Commande> getCommandesExpediees() {
+        ArrayList<Commande> lesCommandesExpediees = new ArrayList<Commande>();
+        for(Commande uneCommande : lesCommandes){
+            if (uneCommande.EnCours() == false){
+                lesCommandesExpediees.add(uneCommande);
+            }
+        }
+        return lesCommandesExpediees;
+    }
     
 }
