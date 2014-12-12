@@ -15,16 +15,16 @@ public class Test {
         d1.addCommande(c2);
         d1.addCommande(c3);
         
+        System.out.println("Id du distributeur : " + d1.getId() + ". Nom du distributeur : " + d1.getNom());
+        System.out.println();
+        
         System.out.println("Voici la liste de toutes les commandes passées :");
         for(Commande uneCommande : d1.getCommandes()){
             System.out.println("Id de la commande : " + uneCommande.getId() + ". Variété du produit : " + uneCommande.getProduit().getVariete() + ". Type du produit : " + uneCommande.getProduit().getType() + ". Calibre du produit : " + uneCommande.getProduit().getCalibre() + ". Prix du produit : " + uneCommande.getPrixHT() + "€. Type de conditionnement : " + uneCommande.getConditionnement() + ". Quantité commandée : " + uneCommande.getQuantite() + ". Date de conditionnement de la commande : " + uneCommande.getDateConditionnement() +".");
         }
         
         System.out.println();
-        
-        System.out.println("Id du distributeur : " + d1.getId() + ". Nom du distributeur : " + d1.getNom());
-        System.out.println();
-        
+               
         System.out.println();
            
         
