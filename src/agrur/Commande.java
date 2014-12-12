@@ -62,5 +62,8 @@ public class Commande {
         }
     }
     
+   /* public String XMLCommande(){
+        
+    }*/
     
 }
