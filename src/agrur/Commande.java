@@ -9,7 +9,7 @@ public class Commande {
     private String conditionnement;                     //Type de conditionnement
     private int quantite;                               //Quantité de produits conditionnés commandée
     private String dateConditionnement;                 //Date de conditionnement de la commande
-    private String dateEnvoi;                             //Date d'envoie de la commande
+    private String dateEnvoi;                           //Date d'envoi de la commande
 
     public Commande(int id, Produit leProduit, double prixHT, String conditionnement, int quantite, String dateConditionnement) {
         this.id = id;
@@ -62,8 +62,7 @@ public class Commande {
         }
     }
     
-   /* public String XMLCommande(){
+   /*public String XMLCommande(){
         
-    }*/
-    
+   } */
 }
