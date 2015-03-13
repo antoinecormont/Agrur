@@ -6,31 +6,39 @@
 
 package agrur;
 
+import java.io.IOException;
+import java.sql.SQLException;
+
 /**
  *
  * @author SYSTEM
  */
-/*public class GestionCommandes {                                                 
+public class GestionCommandes {                                                 
     private PersistanceSQL donnees;                                             // Attribut qui permet de rendre les objets métiers accesssibles
+    private Distributeur leDistributeur;
 
-    public GestionCommandes(PersistanceSQL lesDonnees) {                        // Constructeur
-        GestionCommandes gc = new GestionCommandes();                           // Construit un objet GestionCommandes avec un modèle de persistance associé
-        gc = lesDonnees;
+     private GestionCommandes() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public Distributeur getDistributeur(String idDistributeur) {                // Retourne l'objet Distributeur qui possède l'identifiant idDistributeur passé en paramètre
-        String id = Distributeur.getId();                                       // Retourne null si aucun Distributeur ne possède pas cet identifiant
-        if (id == idDistributeur) {
-            return Distributeur;
-        } else {
-            return null;
-        }
+    public GestionCommandes(PersistanceSQL lesDonnees) {                        // Constructeur
+        GestionCommandes gc = new GestionCommandes();                           // Construit un objet GestionCommandes avec un modèle de persistance associé
+    }
+
+    public Distributeur getDistributeur(String idDistributeur) throws IOException, SQLException {                // Retourne l'objet Distributeur qui possède l'identifiant idDistributeur passé en paramètre
+       leDistributeur = (Distributeur) donnees.ChargerDepuisBase(idDistributeur, "Distributeur");
+       if(leDistributeur == null) {
+           return null;
+       } else {
+           return leDistributeur;
+       }
     }
     
     public String XmlNonLivrees(Distributeur unDistributeur) {
         String chaine;
         unDistributeur.getCommandes();
+        
+        return ;
     }
-    
-    
-}*/
+       
+}
