@@ -1,57 +1,89 @@
-
 package agrur;
 
 public class CommandesXML {
     
-    //Données de produit
-    private String variete;
-    private String type;
-    private int calibre;
-    
     //Données de commande
     private int id;
+    private Produit leProduit;
     private double prixHT;
     private String conditionnement;
     private int quantite;
     private String dateConditionnement;
     private String dateEnvoi;
 	
-    /*public CommandesXML() {
-	    this("anonymous", "");
+    public CommandesXML(int id, Produit leProduit, double prixHT, String conditionnement, int quantite, String dateConditionnement) {
+        this.id = id;
+        this.leProduit = leProduit;
+        this.prixHT = prixHT;
+        this.conditionnement = conditionnement;
+        this.quantite = quantite;
+        this.dateConditionnement = dateConditionnement;
+        this.dateEnvoi = null;
     }
-	
-    public CommandesXML(String login, String password) {
-        this.login = login;
-        this.password = password;
+
+    public int getId() {
+        return id;
     }
-	
-    public String getLogin() {
-        return login;
+
+    public Produit getLeProduit() {
+        return leProduit;
     }
-	
-    public void setLogin(String login) {
-        this.login = login;
+
+    public double getPrixHT() {
+        return prixHT;
     }
-	
-    public String getPassword() {
-        return password;
+
+    public String getConditionnement() {
+        return conditionnement;
     }
-	
-    public void setPassword(String password) {
-        this.password = password;
+
+    public int getQuantite() {
+        return quantite;
     }
-	
-    public String toString() {
-        return login;
+
+    public String getDateConditionnement() {
+        return dateConditionnement;
+    }
+
+    public String getDateEnvoi() {
+        return dateEnvoi;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setLeProduit(Produit leProduit) {
+        this.leProduit = leProduit;
+    }
+
+    public void setPrixHT(double prixHT) {
+        this.prixHT = prixHT;
+    }
+
+    public void setConditionnement(String conditionnement) {
+        this.conditionnement = conditionnement;
+    }
+
+    public void setQuantite(int quantite) {
+        this.quantite = quantite;
+    }
+
+    public void setDateConditionnement(String dateConditionnement) {
+        this.dateConditionnement = dateConditionnement;
+    }
+
+    public void setDateEnvoi(String dateEnvoi) {
+        this.dateEnvoi = dateEnvoi;
     }
     
     public static void main(String[] args) {
         try {
-            CommandesXML user = new CommandesXML("admin", "azerty");
-            XMLTools.encodeToFile(user, "user.xml");
+            Produit p1 = new Produit("Mayette","Fraîche entière",2);
+            CommandesXML c1 = new CommandesXML(1,p1,15.30,"Sachet",50,"2014-12-05");
+            XMLTools.encodeToFile(c1, "c1.xml");
         } catch(Exception e) {
             e.printStackTrace();
         }
     }
 }
-*/
