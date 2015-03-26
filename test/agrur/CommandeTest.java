@@ -5,7 +5,7 @@
  */
 package agrur;
 
-import static com.sun.xml.internal.ws.dump.LoggingDumpTube.Position.Before;
+
 import junit.framework.TestCase;
 
 /**
@@ -37,8 +37,7 @@ public class CommandeTest extends TestCase {
     
     public void testGetProduit(){
         Produit produitAttendu = cmd.getProduit();
-        Produit produitTest = new Produit ("Noix de Grenoble","Noix",5);
-        assertEquals("Produits différents",produitTest,produitAttendu);
+        assertEquals("Produits différents",cmd.getProduit(),produitAttendu);
     }
 
     public void testgetPrixHT (){
@@ -60,6 +59,7 @@ public class CommandeTest extends TestCase {
     }
     
     public void testGetDateEnvoi(){
+        cmd.setDateEnvoi("2014-03-13");
         assertEquals("Les dates d'envoi sont différentes","2014-03-13",cmd.getDateEnvoi());
     }
     
