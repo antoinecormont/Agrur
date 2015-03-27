@@ -83,7 +83,7 @@ public class GestionCommandes {
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
         DOMSource source = new DOMSource(document);
-        StreamResult result = new StreamResult(new File("C:\\Users\\sio\\Documents\\NetBeansProjects\\Agrur\\Agrur\\Commandes.xml"));
+        StreamResult result = new StreamResult(new File("C:\\Users\\sio\\Documents\\NetBeansProjects\\Agrur\\Commandes.xml"));
         transformer.transform(source, result);
  
         System.out.println("File saved!");
