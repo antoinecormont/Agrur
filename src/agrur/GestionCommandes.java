@@ -11,6 +11,7 @@ import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.io.File;
+import java.io.StringReader;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -23,6 +24,7 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.xml.sax.InputSource;
 
 /**
  *
@@ -49,7 +51,7 @@ public class GestionCommandes {
        }
     }
     
-    public static String XmlNonLivrees(Distributeur unDistributeur) throws TransformerException {
+    public String XmlNonLivrees(Distributeur unDistributeur) throws TransformerException {
         Document document = null;
         DocumentBuilderFactory fabrique = null;
         try {
@@ -67,43 +69,11 @@ public class GestionCommandes {
             
             document.appendChild(racine);
             
-            Element commande = (Element) document.createElement("commande");
-            attr = document.createAttribute("id");
-            attr.setValue("2");
-            commande.setAttributeNode(attr);
-            
-            Element produit = (Element) document.createElement("produit");
-            commande.appendChild(produit);
-            attr = document.createAttribute("variete");
-            attr.setValue("Mayette");
-            produit.setAttributeNode(attr);
-            attr = document.createAttribute("type");
-            attr.setValue("Fraiche entière");
-            produit.setAttributeNode(attr);
-            attr = document.createAttribute("calibre");
-            attr.setValue("2");
-            produit.setAttributeNode(attr);
-            
-            Element conditionnement = (Element) document.createElement("conditionnement");
-            commande.appendChild(conditionnement);
-            attr = document.createAttribute("type");
-            attr.setValue("filet 1kg");
-            conditionnement.setAttributeNode(attr);
-            
-            Element quantite = (Element) document.createElement("quantite");
-            quantite.appendChild(document.createTextNode("test"));
-            commande.appendChild(quantite);
-            
-            Element date_conditionnement = (Element) document.createElement("date_conditionnement");
-            date_conditionnement.appendChild(document.createTextNode("test2"));
-            commande.appendChild(date_conditionnement);
-            
-            Element date_envoi = (Element) document.createElement("date_envoi");
-            date_envoi.appendChild(document.createTextNode("test3"));
-            commande.appendChild(date_envoi);
-            
-            racine.appendChild(commande);
-            
+            String chaine = Commande.XMLCommande();
+            builder = fabrique.newDocumentBuilder();  
+            document = builder.parse( new InputSource( new StringReader( chaine ) ) ); 
+
+    
             XMLSerializer ser = new XMLSerializer(System.out,
             new OutputFormat("xml", "UTF-8", true));
             ser.serialize(document);
