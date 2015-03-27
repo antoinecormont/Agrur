@@ -62,7 +62,17 @@ public class Commande {
         }
     }
     
-   /*public String XMLCommande(){
+   public String XMLCommande(){
+        String chaine;
         
-   } */
+        chaine = "<commande id=\"" + this.id + "\">" + "\n";
+        chaine = chaine + "<produit variete=\"" + this.leProduit.getVariete() + "\" type=\"" + this.leProduit.getType() + "\" calibre=\"" + this.leProduit.getCalibre() + "\" />" + "\n";
+        chaine = chaine + "<conditionnement type=\"" + this.conditionnement + "\" />" + "\n";
+        chaine = chaine + "<quantite>" + this.quantite + "</quantite>" + "\n";
+        chaine = chaine + "<date_condtionnement>" + this.dateConditionnement + "</date_conditionnement>" + "\n";
+        chaine = chaine + "<date_envoi>" + this.dateEnvoi + "</date_envoi>" + "\n";
+        chaine = chaine + "</commande>";
+       
+       return chaine;
+   }
 }
