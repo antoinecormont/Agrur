@@ -16,6 +16,7 @@ public class DistributeurTest extends TestCase {
     
     private Distributeur leDistributeur;
     private Commande laCommande;
+    private Commande autreCommande;
     ArrayList<Commande> lesCommandes = new ArrayList<Commande>();
     
     public DistributeurTest(String testName) {
@@ -35,6 +36,7 @@ public class DistributeurTest extends TestCase {
         
         int idCmd=1;
         Produit unProduit = new Produit ("Noix de Grenoble","Noix",5);
+        Produit unAutreProduit = new Produit("Mayette","Entiére",2);
         double unPrixHT=12.4;
         String unConditionnement="Sachet";
         int uneQTE=3;
@@ -42,6 +44,13 @@ public class DistributeurTest extends TestCase {
         String uneDateEnvoi="2014-03-13";
         
         laCommande = new Commande(idCmd,unProduit,unPrixHT,unConditionnement,uneQTE,uneDateConditionnement);
+        autreCommande = new Commande (2,unAutreProduit,10.3,"Filet",5,"2014-02-15");
+        
+        lesCommandes.add(autreCommande);
+        
+        
+        
+        
         
     }
     
