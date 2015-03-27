@@ -1,12 +1,15 @@
 
 package agrur;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Scanner;
+import javax.xml.transform.TransformerException;
 
 
 public class Test {
     
-    public static void main (String[] args){
+    public static void main (String[] args) throws TransformerException, IOException, SQLException{
         Scanner LC = new Scanner(System.in);
         String reponse, nDateEnvoi;
         
@@ -20,7 +23,7 @@ public class Test {
         d1.addCommande(c2);
         d1.addCommande(c3);
         
-        System.out.println("Id du distributeur : " + d1.getId() + ". Nom du distributeur : " + d1.getNom());
+        /*System.out.println("Id du distributeur : " + d1.getId() + ". Nom du distributeur : " + d1.getNom());
         System.out.println();
         
         System.out.println("Voici la liste de toutes les commandes passées :");
@@ -54,8 +57,9 @@ public class Test {
         
         System.out.println();
                
-        System.out.println();
-           
-        
+        System.out.println();*/
+        PersistanceSQL ps = new PersistanceSQL("root", "", "jdbc:mysql://localhost/gestcommande", "org.gjt.mm.mysql.Driver");
+        GestionCommandes gc = new GestionCommandes(ps);
+        String chaine = gc.XmlNonLivrees(d1);
     }
 }
