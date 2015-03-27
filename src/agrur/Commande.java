@@ -65,6 +65,7 @@ public class Commande {
    public String XMLCommande(){
         String chaine;
         
+        //Création du code XML pour une commande.
         chaine = "<commande id=\"" + this.id + "\">" + "\n";
         chaine = chaine + "<produit variete=\"" + this.leProduit.getVariete() + "\" type=\"" + this.leProduit.getType() + "\" calibre=\"" + this.leProduit.getCalibre() + "\" />" + "\n";
         chaine = chaine + "<conditionnement type=\"" + this.conditionnement + "\" />" + "\n";
