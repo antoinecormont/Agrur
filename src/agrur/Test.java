@@ -14,7 +14,7 @@ public class Test {
         String reponse, nDateEnvoi;
         
         Produit p1 = new Produit("Mayette","Fraîche entière",2);
-        Distributeur d1 = new Distributeur("1","Carreclerc");
+        Distributeur d1 = new Distributeur("22","Carreclerc");
         Commande c1 = new Commande(1,p1,15.30,"Sachet",50,"2014-12-05");
         Commande c2 = new Commande(2,p1,17,"Filet",70,"2014-12-05");
         Commande c3 = new Commande(3,p1,22.60,"Carton",20,"2014-12-05");
