@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.io.File;
 import java.io.StringReader;
+import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -52,6 +53,7 @@ public class GestionCommandes {
     }
     
     public String XmlNonLivrees(Distributeur unDistributeur) throws TransformerException {
+        ArrayList<Commande> lesCommandes = new ArrayList<Commande>();
         Document document = null;
         DocumentBuilderFactory fabrique = null;
         try {
@@ -61,19 +63,20 @@ public class GestionCommandes {
             
             Element racine = (Element) document.createElement("commandes");
             Attr attr = document.createAttribute("idDistributeur");
-            attr.setValue("1");
+            attr.setValue(unDistributeur.getId());
             racine.setAttributeNode(attr);
             attr = document.createAttribute("xmlns:xlink");
             attr.setValue("http://www.w3.org/1999/xlink");
             racine.setAttributeNode(attr);
             
             document.appendChild(racine);
-            
-            String chaine = Commande.XMLCommande();
-            builder = fabrique.newDocumentBuilder();  
-            document = builder.parse( new InputSource( new StringReader( chaine ) ) ); 
-
-    
+            lesCommandes = unDistributeur.getCommandes();
+            for (Commande tmp : lesCommandes) {
+                String chaine = tmp.XMLCommande();
+                builder = fabrique.newDocumentBuilder();  
+                document = builder.parse( new InputSource( new StringReader( chaine ) ) ); 
+            }
+               
             XMLSerializer ser = new XMLSerializer(System.out,
             new OutputFormat("xml", "UTF-8", true));
             ser.serialize(document);
