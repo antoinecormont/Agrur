@@ -14,6 +14,11 @@ import javax.xml.transform.TransformerException;
 
 
 /**
+ * La classe GestionCommandes permet d'orchestrer les traitements liés au service Web
+ * Une GestionCommandes est caractérisée par : 
+ * <li>L'attribut PersistanceSQL qui permet de rendre les objets métiers accessibles</li>
+ * <li>
+ * 
  *
  * @author SYSTEM
  */
