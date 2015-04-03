@@ -6,32 +6,18 @@
 
 package agrur;
 
-import com.sun.org.apache.xml.internal.serialize.OutputFormat;
-import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.io.File;
-import java.io.StringReader;
 import java.util.ArrayList;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
- 
-import org.w3c.dom.Attr;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.xml.sax.InputSource;
+
+
 
 /**
  *
  * @author SYSTEM
  */
-/*public class GestionCommandes {                                                 
+public class GestionCommandes {                                                 
     private PersistanceSQL donnees;                                             // Attribut qui permet de rendre les objets métiers accesssibles
     private Distributeur leDistributeur;
 
@@ -54,28 +40,15 @@ import org.xml.sax.InputSource;
     
     public String XmlNonLivrees(Distributeur unDistributeur) throws TransformerException {
         ArrayList<Commande> lesCommandes = new ArrayList<Commande>();
+        lesCommandes = unDistributeur.getCommandesEnCours();
         String chaine = "";
         chaine = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + "\n";
-        chaine = chaine + "<commandes idDistributeur=\"" + unDistributeur.getId() + "\" xmlns:xlink=\"http://www.w3.org/1999/xlink";
-            for (Commande tmp : lesCommandes) {
-                chaine = chaine + tmp.XMLCommande();
-                document 
-                        = builder.parse( new InputSource( new StringReader( chaine ) ) ); 
-            }
-                System.out.println(chaine);
-                
-     
-        } catch (Exception e) {
-            e.printStackTrace();
+        chaine = chaine + "<commandes idDistributeur=\"" + unDistributeur.getId() + "\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">" + "\n";
+        for (Commande tmp : lesCommandes) {
+                chaine = chaine + "\n" + tmp.XMLCommande();
         }
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-        Transformer transformer = transformerFactory.newTransformer();
-        DOMSource source = new DOMSource(document);
-        StreamResult result = new StreamResult(new File("C:\\Users\\sio\\Documents\\NetBeansProjects\\Agrur\\Commandes.xml"));
-        transformer.transform(source, result);
- 
-        System.out.println("File saved!");
-        return null;
+        chaine = chaine + "\n" + "</commandes>";
+        return chaine;
     }
 
-}*/
+}
