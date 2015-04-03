@@ -71,4 +71,17 @@ public class CommandeTest extends TestCase {
     public void testEnCours(){
         assertTrue("La commande n'est pas en cours",cmd.EnCours());
     }
+    
+    public void testXMLCommande(){
+        String XMLCmdAttendu ="<commande id=\"3\">\n" +
+        "<produit variete=\"Mayette\" type=\"Fraîche entière\" calibre=\"2\" />\n" +
+        "<conditionnement type=\"Carton\" />\n" +
+    "<quantite>20</quantite>\n" +
+    "<date_conditionnement>2014-12-05</date_conditionnement>\n" +
+    "<date_envoi>null</date_envoi>\n" +
+    "</commande>";
+        
+        String XMLCmdObtenu = cmd.XMLCommande();
+        assertEquals("Les XML Obtenus pour la commande sont différents",XMLCmdAttendu,XMLCmdObtenu);
+    }
 }
