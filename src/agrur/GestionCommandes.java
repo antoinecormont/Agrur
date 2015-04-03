@@ -31,7 +31,7 @@ import org.xml.sax.InputSource;
  *
  * @author SYSTEM
  */
-public class GestionCommandes {                                                 
+/*public class GestionCommandes {                                                 
     private PersistanceSQL donnees;                                             // Attribut qui permet de rendre les objets métiers accesssibles
     private Distributeur leDistributeur;
 
@@ -54,30 +54,13 @@ public class GestionCommandes {
     
     public String XmlNonLivrees(Distributeur unDistributeur) throws TransformerException {
         ArrayList<Commande> lesCommandes = new ArrayList<Commande>();
-        Document document = null;
-        DocumentBuilderFactory fabrique = null;
-        try {
-            fabrique = DocumentBuilderFactory.newInstance();
-            DocumentBuilder builder = fabrique.newDocumentBuilder();
-            document = builder.newDocument();
-            
-            Element racine = (Element) document.createElement("commandes");
-            Attr attr = document.createAttribute("idDistributeur");
-            attr.setValue(unDistributeur.getId());
-            racine.setAttributeNode(attr);
-            attr = document.createAttribute("xmlns:xlink");
-            attr.setValue("http://www.w3.org/1999/xlink");
-            racine.setAttributeNode(attr);
-            
-            document.appendChild(racine);
-            lesCommandes = unDistributeur.getCommandesEnCours();
-            String chaine = "";
-            XMLSerializer ser = new XMLSerializer(System.out,
-                new OutputFormat("xml", "UTF-8", true));
-                ser.serialize(document);
+        String chaine = "";
+        chaine = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + "\n";
+        chaine = chaine + "<commandes idDistributeur=\"" + unDistributeur.getId() + "\" xmlns:xlink=\"http://www.w3.org/1999/xlink";
             for (Commande tmp : lesCommandes) {
-                
                 chaine = chaine + tmp.XMLCommande();
+                document 
+                        = builder.parse( new InputSource( new StringReader( chaine ) ) ); 
             }
                 System.out.println(chaine);
                 
@@ -95,4 +78,4 @@ public class GestionCommandes {
         return null;
     }
 
-}
+}*/
