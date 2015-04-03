@@ -70,16 +70,18 @@ public class GestionCommandes {
             racine.setAttributeNode(attr);
             
             document.appendChild(racine);
-            lesCommandes = unDistributeur.getCommandes();
-            for (Commande tmp : lesCommandes) {
-                String chaine = tmp.XMLCommande();
-                builder = fabrique.newDocumentBuilder();  
-                document = builder.parse( new InputSource( new StringReader( chaine ) ) ); 
-            }
-               
+            lesCommandes = unDistributeur.getCommandesEnCours();
+            String chaine = "";
             XMLSerializer ser = new XMLSerializer(System.out,
-            new OutputFormat("xml", "UTF-8", true));
-            ser.serialize(document);
+                new OutputFormat("xml", "UTF-8", true));
+                ser.serialize(document);
+            for (Commande tmp : lesCommandes) {
+                
+                chaine = chaine + tmp.XMLCommande();
+            }
+                System.out.println(chaine);
+                
+     
         } catch (Exception e) {
             e.printStackTrace();
         }
