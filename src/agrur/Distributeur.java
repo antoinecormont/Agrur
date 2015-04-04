@@ -1,29 +1,32 @@
 package agrur;
 
 import java.util.ArrayList;
-/*
-Distributeur est la classe représentant le distributeur qui réalise une commande
-un Distributeur est caractérisé par :
-Un identifiant unique String
-Un nom String
-Une array liste de Commande, qui correspond aux commandes que le Distributeur aura effectuée
+/** 
+ * Classe représentant le distributeur qui réalise une commande
+ * un Distributeur est caractérisé par :
+ * un identifiant unique, 
+ * un nom,
+ * une collecction de commande qui correspond aux commandes que le Distributeur aura effectuée
+ * @author groupe PPE 4 
 */
 
 public class Distributeur {
-    //l'ID du distributeur
+    /**
+     * Déclaration des variables globales de la classe
+     * private String id : id du Dsitributeur,
+     * private String nom : nom du Distributeur,
+     * ArrayList Commanndes lesCommandes : collection de commandes réalisée par le Distributeur.
+     */
     private String id;
-    
-    //Le nom du Distributeur
     private String nom;
-    
-    //ArrayList de Commande des commandes qui le distributeur aura effectuées
     private ArrayList<Commande> lesCommandes;     
     
     
-    /* Constructeur 
-    Construit un objet Distributeur. A ce stade, il n'est pas stocké dans la bdd
-    @param id identifiant unique du Distributeur
-    @param nom nom de famille du Distributeur
+    /**
+     * Constructeur de la classe 
+     * Construit un objet Distributeur
+     * @param id : identifiant unique du distributeur
+     * @param nom : non du distributeur.
     */
     public Distributeur(String unId, String unNom) {
         this.id = unId;
@@ -31,11 +34,12 @@ public class Distributeur {
         this.lesCommandes = new ArrayList<Commande>();
     }
     
-    /*Constructeur
-    Construit un objet Distributeur
-    @param id identifiant unique du Distributeur
-    @param nom nom de famille du Distributeur
-    @param listeDeCommande ArrayListe de commande du Distributeur
+    /**
+     * Constructeur surchargé de la classe 
+     * Construit un objet Distributeur
+     * @param id : identifiant unique du Distributeur
+     * @param nom : nom du Distributeur
+     * @param uneListeCommande : collection de Commande réalisée par le Distributeur
     */
     public Distributeur(String unId, String unNom, ArrayList<Commande> uneListeCommande) {
         this.id = unId;
@@ -43,36 +47,46 @@ public class Distributeur {
         this.lesCommandes = uneListeCommande;
     }
 
-    /*Retourne l'ID du Distributeur
-    @return L'identifiant du Distributeur
+    /**
+     * Retourne l'ID du Distributeur
+     * @return id
+     *           identifiant du Distributeur
     */
     public String getId() {
         return id;
     }
 
-    /*Retourne le nom du Distributeur
-    @return le nom du Distributeur
+    /**
+     * Retourne le nom du Distributeur
+    @return nom
+    *           nom du distributeur
     */
     public String getNom() {
         return nom;
     }
 
-    /*Ajoute une Commande à la liste de Commande
-    @param uneCommande une commande
+    /**
+     * Ajoute une Commande à la liste de Commande
+     * @param uneCommande
+     *              la commande a ajouter à la collection de commande
     */
     public void addCommande(Commande uneCommande){
         this.lesCommandes.add(uneCommande);
     }
     
-    /*Retourne la liste des commandes du Distributeur
-    @return Retourne l'ensemble des commandes passées par ce Distributeur
+    /**
+     * Retourne la liste des commandes du Distributeur
+    @return lesCommandes
+    *               retourne la collection de Commande du Distributeur
     */
     public ArrayList<Commande> getCommandes() {
         return lesCommandes;
     }
 
-    /*Retourne la liste des commandes en cours du Distributeur
-    @return une collection constituée des commandes en cours du Distributeur
+    /**
+     * Retourne la liste des commandes en cours du Distributeur
+     * @return lesCommandesEnCours
+     *                  Collection constituée des commandes en cours du Distributeur
     */
     public ArrayList<Commande> getCommandesEnCours() {
         ArrayList<Commande> lesCommandesEnCours = new ArrayList<Commande>();
@@ -84,8 +98,10 @@ public class Distributeur {
         return lesCommandesEnCours;
     }
     
-    /*Retourne la liste des commandes expédiées du Distributeur
-    @return une collection consituée des commandes expédiées
+    /**
+     * Retourne la liste des commandes expédiées du Distributeur
+    @return lesCommandesExpediees
+    *                   Retourne la collection des Commandes expédiées du Distributeur
     */
     public ArrayList<Commande> getCommandesExpediees() {
         ArrayList<Commande> lesCommandesExpediees = new ArrayList<Commande>();
