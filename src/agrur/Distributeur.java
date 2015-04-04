@@ -39,9 +39,12 @@ public class Distributeur {
     /**
      * Constructeur surchargé de la classe 
      * Construit un objet Distributeur
-     * @param id : identifiant unique du Distributeur
-     * @param nom : nom du Distributeur
-     * @param uneListeCommande : collection de Commande réalisée par le Distributeur
+     * @param unId
+     *      identifiant unique du Distributeur
+     * @param unNom
+     *      nom du Distributeur
+     * @param uneListeCommande
+     *      collection de Commande réalisée par le Distributeur
     */
     public Distributeur(String unId, String unNom, ArrayList<Commande> uneListeCommande) {
         this.id = unId;
