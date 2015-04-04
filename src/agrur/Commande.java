@@ -38,12 +38,18 @@ public class Commande {
     /**
     * Constructeur de la classe commande
     * Construit un objet commande
-    * @param id : identifiant unique de la commande,
-    * @param Produit : Produit qui compose la commande,
-    * @param prixHT : prix hors taxe unitaire de la commande,
-    * @param conditionnement : mode de conditionnement de la commande,
-    * @param quantite : quantité commandée,
-    * @param dateConditionnement : date de conditionnement de la commande.
+    * @param id 
+    *       identifiant unique de la commande,
+    * @param leProduit
+    *       Produit qui compose la commande,
+    * @param prixHT
+    *       prix hors taxe unitaire de la commande,
+    * @param conditionnement
+    *       mode de conditionnement de la commande,
+    * @param quantite
+    *       quantité commandée,
+    * @param dateConditionnement
+    *       date de conditionnement de la commande.
     */
     public Commande(int id, Produit leProduit, double prixHT, String conditionnement, int quantite, String dateConditionnement) {
         this.id = id;
