@@ -39,7 +39,7 @@ public class GestionCommandes {
     /**
      * Constructeur de la classe GestionCommandes
      * Construit un objet GestionCommandes avec un modéle de persistance associé
-     * @param PersistanceSQL 
+     * @param lesDonnees
      *                      objet de la classe PersistanceSQL
      */ 
     public GestionCommandes(PersistanceSQL lesDonnees) {                        
@@ -50,8 +50,14 @@ public class GestionCommandes {
      * Retourne un Distributeur
      * Retourne l'objet Dsitributeur qui possède l'identifiant idDistributeur passé en paramétre
      * Retourne null si aucun Distributeur ne possède cet identifiant
+     * @param idDistributeur
+     *      id du distributeur à retourner
      * @return leDistributeur 
      *                      un objet Distributeur
+     * @exception IOException
+     *      erreur de type IO
+     * @exception SQLException
+     *      erreur de type SQL
      */
     public Distributeur getDistributeur(String idDistributeur) throws IOException, SQLException {                
        leDistributeur = (Distributeur) donnees.ChargerDepuisBase(idDistributeur, "Distributeur");
@@ -65,6 +71,10 @@ public class GestionCommandes {
     /**
      * Retourne une chaine qui représente le XML
      * Retourne une chaîne de caractére qui représente le document XML de la liste des commande non livrées 
+     * @param unDistributeur
+     *      Distributeur dont on souhaite le XML des commandes
+     * @exception TransformerException
+     *      erreur  du type Transformer Exception
      * du Distributeur passé en paramétre
      *   @return chaine
      *                  chaine de caractére XML
