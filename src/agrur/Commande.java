@@ -5,13 +5,14 @@ import java.util.Date;
 /*
 * Classe Java Commande de l'application pour Agrur
 * Une Commande est caractérisée par : 
-*<li>Un identifiant unique attribué définitevement int </li>
-*<li>Le ou les produit(s) dont elle est composée Produit</li>
-*<li>Un prix Hors Taxe double</li>
-*<li>Un mode de conditionnement String </li>
-*<li>Une quantité int</li>
-*<li>Une date de conditionnement Date</li>
-*<li>Une date d'envoi Date</li>
+*Un identifiant unique attribué définitevement int 
+*Le ou les produit(s) dont elle est composée Produit
+*Un prix Hors Taxe double
+*Un mode de conditionnement String 
+*Une quantité int
+*Une date de conditionnement Date
+*Une date d'envoi Date
+@author Groupe PPE 4
 */
 
 public class Commande {
@@ -127,7 +128,7 @@ public class Commande {
         }
     }
     
-   /*Retourne le XMOL représentant la commande
+   /*Retourne le XML représentant la commande
     @return la chaine correspondant  au code XML représentant la commande
     Cette fonction est appelée par la méthode XmlNonLivrees() de la classe GestionCommandes décrite ci-après
     */ 
