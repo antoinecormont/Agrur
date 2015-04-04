@@ -41,12 +41,18 @@ public class PersistanceSQL {
     /**
      * Constructeur de la classe
      * Construit un objet PersistanceSQL. Cet objet permettra de charger les données une base de données ou de les sauvegarder dans la base
-     * @param nomUtilisateur : nom utilisateur pour se connecter à la base,
-     * @param motDePasse : mot de passe pour se connecter à la base, 
-     * @param serveurBD : serveur utilisé pour accèder à la base, 
-     * @param driverSGBD : driver utilisé pour accèder à la base
-     * @exception IOException
-     * @exception SQLException
+     * @param nomUtilisateur
+     *      nom utilisateur pour se connecter à la base,
+     * @param motDePasse
+     *      mot de passe pour se connecter à la base, 
+     * @param serveurBD
+     *      serveur utilisé pour accèder à la base, 
+     * @param driverSGBD
+     *      driver utilisé pour accèder à la base
+     * @throws IOException
+     *      Cas d'une erreur de type IO
+     * @throws SQLException
+     *      Cas d'une erreur de type SQL
     */
     public PersistanceSQL(String nomUtilisateur, String motDePasse, String serveurBD, String driverSGBD) throws IOException, SQLException {   
         con = null;
@@ -81,10 +87,12 @@ public class PersistanceSQL {
     
     /**
      * Procédure pour stocker les données dans la base
-     * @param Object 
-     *              l'objet qui sera stocké dans la base
+     * @param unObjet 
+     *      l'objet qui sera stocké dans la base
      * @exception IOException
+     *      erreur du type IO
      * @exception SQLException
+     *      erreur du type SQL
     */
     public void RangerDansBase(Object unObjet) throws IOException, SQLException {
         //PersistanceSQL ps = new PersistanceSQL("root", "", "jdbc:mysql://localhost/gestcommande", "org.gjt.mm.mysql.Driver");
@@ -147,13 +155,15 @@ public class PersistanceSQL {
      * ainsi que l'ensemble de ses objets liés
      * retourne NULL si aucun objet ne possède cet identifiant
      * @param id 
-     *         id de l'objet à charger depuis la base
+     *      id de l'objet à charger depuis la base
      * @param nomClasse
-     *         classe de l'objet à charger depuis la base
-     * @exception
-     *         IOException
-     * @exception
-     *         SQLException
+     *      classe de l'objet à charger depuis la base
+     * @exception IOException
+     *      erreur de type IO
+     * @exception SQLException
+     *      erreur du type SQL
+     * @return object
+     *      objet retourner selon celui qui a été placé en paramétre lors de l'appel de la fonction
     */
     public Object ChargerDepuisBase(String id, String nomClasse) throws IOException, SQLException {
         //PersistanceSQL persist = new PersistanceSQL(this.nomUtilisateur, this.mdp, this.serveur, this.driver);
