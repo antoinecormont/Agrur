@@ -14,11 +14,11 @@ import java.util.ArrayList;
 /** 
  * Classe permettant de charger les données concernant un Distributeur depuis la base gestCommandes 
  * la classe PersistanceSQL est caractérisée par : 
- * <li>Un nom d'utilisateur de la base de données</li>
- * <li>Un mot de passe de la base de données</li>
- * <li>Un nom de serveur pour accèder à la base de données</li>
- * <li>Un driver pour accèder à la base de données</li>
- * <li>Un objet connection pour se connecter à la base</li>
+ * Un nom d'utilisateur de la base de données, 
+ * Un mot de passe de la base de données,  
+ * Un nom de serveur pour accèder à la base de données, 
+ * Un driver pour accèder à la base de données, 
+ * Un objet connection pour se connecter à la base, 
  * @author Corentin
  */
 // Création de la classe
