@@ -3,9 +3,9 @@ package agrur;
 /*Classe produit de l'application Agrur
 une commande est composée d'un ou plusieurs produit(s)
 un Produit est défini par : 
-<li>Une variété (Noix...)</li>
-<li>Un Type de produit (Fraîche, entière..)</li>
-<li>Un calibre (2..)</li>
+Une variété (Noix...)
+Un Type de produit (Fraîche, entière..)
+Un calibre (2..)
 */
 
 public class Produit {
