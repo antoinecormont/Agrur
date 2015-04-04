@@ -4,9 +4,9 @@ import java.util.ArrayList;
 /*
 Distributeur est la classe représentant le distributeur qui réalise une commande
 un Distributeur est caractérisé par :
-</li> un identifiant unique String</li>
-<li> Un nom String</li>
-<li>Une array liste de Commande, qui correspond aux commandes que le Distributeur aura effectuée
+Un identifiant unique String
+Un nom String
+Une array liste de Commande, qui correspond aux commandes que le Distributeur aura effectuée
 */
 
 public class Distributeur {
