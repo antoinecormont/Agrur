@@ -25,8 +25,10 @@ public class Distributeur {
     /**
      * Constructeur de la classe 
      * Construit un objet Distributeur
-     * @param id : identifiant unique du distributeur
-     * @param nom : non du distributeur.
+     * @param unId
+     *      identifiant unique du distributeur
+     * @param unNom
+     *      non du distributeur.
     */
     public Distributeur(String unId, String unNom) {
         this.id = unId;
