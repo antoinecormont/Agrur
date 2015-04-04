@@ -16,17 +16,18 @@ import javax.xml.transform.TransformerException;
 /**
  * La classe GestionCommandes permet d'orchestrer les traitements liés au service Web
  * Une GestionCommandes est caractérisée par : 
- * L'attribut PersistanceSQL qui permet de rendre les objets métiers accessibles
- * Un objet Distributeur
+ * L'attribut PersistanceSQL qui permet de rendre les objets métiers accessibles, 
+ * Un objet Distributeur, 
  * 
  *
  * @author Groupe PPE4
  */
 public class GestionCommandes {    
     
-    /*Déclaration des variables globales de la classe
-    *Attribut qui permet de rendre les objets métiers accesssibles
-    *un objet Distributeur
+    /**
+    * Déclaration des variables globales de la classe
+    * Attribut qui permet de rendre les objets métiers accesssibles, 
+    * Un objet Distributeur.
     */
     private PersistanceSQL donnees;                                            
     private Distributeur leDistributeur;
@@ -35,19 +36,23 @@ public class GestionCommandes {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    /*Constructeur de la classe GestionCommandes
-     Construit un objet GestionCommandes avec un modél de persistance associé
-     @param PersistanceSQL objet de la classe PersistanceSQL
+    /**
+     * Constructeur de la classe GestionCommandes
+     * Construit un objet GestionCommandes avec un modéle de persistance associé
+     * @param PersistanceSQL 
+     *                      objet de la classe PersistanceSQL
      */ 
     public GestionCommandes(PersistanceSQL lesDonnees) {                        
         donnees = lesDonnees;                                  
     }
     
-    /* Retourne un Distributeur
-    Retourne l'objet Dsitributeur qui possède l'identifiant idDistributeur passé en paramétre
-    Retourne null si aucun Distributeur ne possède cet identifiant
-    @return leDistributeur un objet Distributeur
-    */
+    /**
+     * Retourne un Distributeur
+     * Retourne l'objet Dsitributeur qui possède l'identifiant idDistributeur passé en paramétre
+     * Retourne null si aucun Distributeur ne possède cet identifiant
+     * @return leDistributeur 
+     *                      un objet Distributeur
+     */
     public Distributeur getDistributeur(String idDistributeur) throws IOException, SQLException {                
        leDistributeur = (Distributeur) donnees.ChargerDepuisBase(idDistributeur, "Distributeur");
        if(leDistributeur == null) {
@@ -57,10 +62,12 @@ public class GestionCommandes {
        }
     }
     
-    /*Retourne une chaine qui représente le XML
-    Retourne une chaîne de caractére qui représente le document XML de la liste des commande non livrées 
-    du Distributeur passé en paramétre
-    @return chaine de caractére XML
+    /**
+     * Retourne une chaine qui représente le XML
+     * Retourne une chaîne de caractére qui représente le document XML de la liste des commande non livrées 
+     * du Distributeur passé en paramétre
+     *   @return chaine
+     *                  chaine de caractére XML
     */
     public String XmlNonLivrees(Distributeur unDistributeur) throws TransformerException {
         ArrayList<Commande> lesCommandes = new ArrayList<Commande>();
