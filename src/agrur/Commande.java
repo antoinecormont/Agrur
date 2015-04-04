@@ -2,49 +2,48 @@ package agrur;
 
 import java.util.Date;
 
-/*
+/**
 * Classe Java Commande de l'application pour Agrur
 * Une Commande est caractérisée par : 
-*Un identifiant unique attribué définitevement int 
-*Le ou les produit(s) dont elle est composée Produit
-*Un prix Hors Taxe double
-*Un mode de conditionnement String 
-*Une quantité int
-*Une date de conditionnement Date
-*Une date d'envoi Date
-@author Groupe PPE 4
+* Un identifiant unique attribué définitevement, 
+* Le ou les produit(s) dont elle est composée, 
+* Un prix Hors Taxe, 
+* Un mode de conditionnement, 
+* Une quantité, 
+* Une date de conditionnement,
+* Une date d'envoi.
+* @author Groupe PPE 4
 */
 
 public class Commande {
-    /*Identifiant de la commande*/
+    /**
+     * Déclaration des variables globales de la classe :
+     * private int id id commande,
+     * private Produit leProduit produit de la commande,
+     * private double prixHT prix Hors Taxe unitaire de la commande,
+     * private String condiitionnement type de conditionnement de la commande (sachet, filet..),
+     * private int quantite quantité commandée,
+     * private String dateConditionnement date de conditionnement de la commande,
+     * private String dateEnvoi date d'envoi de la commande
+     * @author groupe PPE 4
+     */
     private int id;     
-    
-    /* //Produit commandé (catégorie de noix)*/
     private Produit leProduit;  
-    
-    /*//Prix unitaire du produit négocié avec le client*/
     private double prixHT;   
-    
-    //Type de conditionnement
     private String conditionnement;   
-    
-    //Quantité de produits conditionnés commandée
     private int quantite;      
-    
-    //Date de conditionnement de la commande
     private String dateConditionnement; 
-    
-    //Date d'envoi de la commande
     private String dateEnvoi;                           
 
-    /*Constructeur de la classe commande
-    Construit un objet Commande
-    @param id identifiant unique de la commande
-    @param Produit Produit(s) qui compose(nt) la commande
-    @param prixHT Prix total Hors Taxe de la commande
-    @param conditionnement Mode de conditionnement de la commande (sachet, filet, carton..)
-    @param quantite Quantité du produit inclu dans cette commande
-    @param DateConditionnement date de conditionnement de la commande
+    /**
+    * Constructeur de la classe commande
+    * Construit un objet commande
+    * @param id : identifiant unique de la commande,
+    * @param Produit : Produit qui compose la commande,
+    * @param prixHT : prix hors taxe unitaire de la commande,
+    * @param conditionnement : mode de conditionnement de la commande,
+    * @param quantite : quantité commandée,
+    * @param dateConditionnement : date de conditionnement de la commande.
     */
     public Commande(int id, Produit leProduit, double prixHT, String conditionnement, int quantite, String dateConditionnement) {
         this.id = id;
@@ -56,68 +55,82 @@ public class Commande {
         this.dateEnvoi = null;
     }
 
-    /* 
-    Retourne l'ID de la commande
-    @return L'identifiant de la commande
+    /**
+     * Retourne l'ID de la commande
+     * @return id
+     *          identifiant de la commande
     */
     public int getId() {
         return id;
     }
 
-    /* 
-    Retourne le ou les produit(s) qui compose(nt) la commande
-    @return Le produit commandé
+    /**
+     * Retourne le produit qui compose la commande
+     * @return produit
+     *              produit inclu dans la commande
     */
     public Produit getProduit() {
         return leProduit;
     }
 
-    /*
-    Retourne le prix total hors taxe de la commande
-    @return le prix unitaire négocié avec le client
+    /**
+     * Retourne le prix hors taxe unitaire de la commande
+     * @return prixHT
+     *              prix hors taxe unitaire négocié avec le client
     */
     public double getPrixHT() {
         return prixHT;
     }
     
-    /* Retourne le mode de conditionnement
-    @return le type de conditionnement des produits de cette commande
+    /**
+     * Retourne le mode de conditionnement
+     * @return conditionnement
+     *                      mode de conditionnement de la commande
     */
     public String getConditionnement() {
         return conditionnement;
     }
 
-    /*Retourne la quantité commandée
-    @return la quantité commandée
+    /**
+     * Retourne la quantité commandée
+     * @return quantite
+     *                 quantite commandée
     */
     public int getQuantite() {
         return quantite;
     }
 
-    /*Retourne la date de conditionnement
-    @return la date de conditionnement de la commande
+    /**
+     * Retourne la date de conditionnement
+     * @return dateConditionnement
+     *                  la date de conditionnement de la commande
     */
     public String getDateConditionnement() {
         return dateConditionnement;
     }
 
-    /*Retourne la date d'envoi
-    @return la date d'envoi de la commande
+    /**
+     * Retourne la date d'envoi
+     * @return dateEnvoi
+     *              retourne la date d'envvoi de la commande
     */
     public String getDateEnvoi() {
         return dateEnvoi;
     }
     
-    /*Met à jour la date d'envoi de la commande
-    @param nDate envoi la nouvelle date d'envoi
+    /**
+     * Met à jour la date d'envoi de la commande
+     * @param nDateEnvoi
+     *              la nouvelle date d'envoi
     */
     public void setDateEnvoi(String nDateEnvoi) {
         this.dateEnvoi = nDateEnvoi;
     }
 
-    /*Retourne l'état de la commande
-    @return vrai si la commande n'est pas encore expédiée, faux sinon
-    Une commande n'est pas expédiée si sa date d'envoi contient NULL
+    /**
+     * Retourne l'état de la commande
+     * @return drapeau
+     *              vrai si la commande n'est pas encore expédiée, faux sinon. Une commande n'est pas expédée si sa date d'envoi contient NULL
     */
     public boolean EnCours(){
         if (dateEnvoi == null){
@@ -128,9 +141,11 @@ public class Commande {
         }
     }
     
-   /*Retourne le XML représentant la commande
-    @return la chaine correspondant  au code XML représentant la commande
-    Cette fonction est appelée par la méthode XmlNonLivrees() de la classe GestionCommandes décrite ci-après
+   /**
+    * Retourne le XML représentant la commande
+    * @return chaine
+    *               chaine correspondant au code XML représentant la commande.
+    * Cette focntion est appelée par la méthode XmlNonLivrees() de la classe GestionCommandes
     */ 
    public String XMLCommande(){
         String chaine;
