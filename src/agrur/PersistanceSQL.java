@@ -1,7 +1,7 @@
 
 package agrur;
 
-// Importation
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,20 +12,41 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 /** 
- * Classe permettant de manipuler les tables distributeur, produit et commande
+ * Classe permettant de charger les données concernant un Distributeur depuis la base gestCommandes 
+ * la classe PersistanceSQL est caractérisée par : 
+ * <li>Un nom d'utilisateur de la base de données</li>
+ * <li>Un mot de passe de la base de données</li>
+ * <li>Un nom de serveur pour accèder à la base de données</li>
+ * <li>Un driver pour accèder à la base de données</li>
+ * <li>Un objet connection pour se connecter à la base</li>
  * @author Corentin
  */
 // Création de la classe
 public class PersistanceSQL {
     
-    // Déclaration des variables pour se connecter
+    /*Déclaration des variables globales de la classe
+    nomUtilisateur : le nom utilisateur utilisé pour se connecter à la base
+    mdp : le mot de passe utilisé pour se connecter à la base
+    serveur : serveur utilisé pour accèder à la base
+    driver : driver utilisé pour accèder à la base
+    con : objet Connection pour se connecter à la base
+    */
     private String nomUtilisateur ="root";
     private String mdp="";
     private String serveur="jdbc:mysql://localhost/gestcommande";
     private String driver="org.gjt.mm.mysql.Driver";
     private Connection con;
     
-    // Constructeur de PersistanceSQL avec les paramètres déclarés en haut de la classe en privé
+    /*Constructeur de la classe
+    Construit un objet PersistanceSQL. cet objet permettra de charger les données depuis uen base de données
+    ou des les sauvegarder dans la base
+    @param nomUtilisateur : nom d'utilisateur utilisé pour se connecter à la base
+    @param motDePasse : mot de passe utilisé pour se connecter à la base
+    @serveurBD : serveur utilisé pour accèder à la base
+    @driverSGBD : driver utilisé pour accèder à la base
+    @Exception IOException
+    @Exception SQLException
+    */
     public PersistanceSQL(String nomUtilisateur, String motDePasse, String serveurBD, String driverSGBD) throws IOException, SQLException {   
         con = null;
         try {
@@ -57,7 +78,12 @@ public class PersistanceSQL {
         }
     }
     
-    // Procédure permettant d'insérer l'objet en paramètre dans la base
+    /* Procédure pour stocker les données dans la base
+    Sotcke les données de l'objet dans la base de données
+    @param Object unObjet : l'objet qui sera stocké dans la base
+    @Exception IOException
+    @Exception SQLException
+    */
     public void RangerDansBase(Object unObjet) throws IOException, SQLException {
         //PersistanceSQL ps = new PersistanceSQL("root", "", "jdbc:mysql://localhost/gestcommande", "org.gjt.mm.mysql.Driver");
         // si l'objet est de type Distributeur
@@ -114,7 +140,13 @@ public class PersistanceSQL {
         }
     }
     
-    // Retourne l'objet de la classe nomClass en paramètre à l'aide d'un identifiant sinon retourne null
+    /*Retourne l'objet de la classe nomClasse
+    Retourne l'objet de la classe nomClasse dont l'identifiant est "id". Cet objet est chargé depuis la base de données
+    ainsi que l'ensemble de ses objets liés. 
+    Retourne NULL si aucun objet ne possède cet identifiant
+    @Param id : id de l'objet à charger depuis la base
+    @Param nomClasse : classe de l'objet à charger depuis la base
+    */
     public Object ChargerDepuisBase(String id, String nomClasse) throws IOException, SQLException {
         //PersistanceSQL persist = new PersistanceSQL(this.nomUtilisateur, this.mdp, this.serveur, this.driver);
         // Si le nomClasse est un Distributeur
