@@ -146,6 +146,8 @@ public class PersistanceSQL {
     Retourne NULL si aucun objet ne possède cet identifiant
     @Param id : id de l'objet à charger depuis la base
     @Param nomClasse : classe de l'objet à charger depuis la base
+    @Exception IOException
+    @Exception SQLException
     */
     public Object ChargerDepuisBase(String id, String nomClasse) throws IOException, SQLException {
         //PersistanceSQL persist = new PersistanceSQL(this.nomUtilisateur, this.mdp, this.serveur, this.driver);
