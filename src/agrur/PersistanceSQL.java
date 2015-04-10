@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 
 /** 
  * Classe permettant de charger les données concernant un Distributeur depuis la base gestCommandes 
@@ -118,8 +119,8 @@ public class PersistanceSQL {
             double prix = uneCommande.getPrixHT();
             String condi = uneCommande.getConditionnement();
             int qté = uneCommande.getQuantite();
-            String dateCondi = uneCommande.getDateConditionnement();
-            String dateEnvoi = uneCommande.getDateEnvoi();
+            Date dateCondi = uneCommande.getDateConditionnement();
+            Date dateEnvoi = uneCommande.getDateEnvoi();
              // Ajout dans la table commande
             String libRequete = "INSERT INTO commande VALUES(?, ?, ?, ?, ?, ?)";
             PreparedStatement requetePrepare = con.prepareStatement(libRequete);
@@ -127,8 +128,8 @@ public class PersistanceSQL {
             requetePrepare.setDouble(2, prix);
             requetePrepare.setString(3, condi);
             requetePrepare.setInt(4, qté);
-            requetePrepare.setString(5, dateCondi);
-            requetePrepare.setString(1, dateEnvoi);
+            requetePrepare.setDate(5, (java.sql.Date) dateCondi);
+            requetePrepare.setDate(1, (java.sql.Date) dateEnvoi);
             requetePrepare.executeUpdate();
             System.out.println("Ajout de la commande réussi!");
         }
@@ -197,7 +198,7 @@ public class PersistanceSQL {
                 }
                 while (res2.next()) {
                     // Création d'une instance de commande
-                    laCommande = new Commande(res.getInt(1), leProduit, res.getDouble(2), res.getString(3), res.getInt(4), res.getString(5));
+                    laCommande = new Commande(res.getInt(1), leProduit, res.getDouble(2), res.getString(3), res.getInt(4), res.getDate(5));
                     // Ajout dans l'ArrayList
                     lesCommandes.add(laCommande);
                 }
@@ -238,7 +239,7 @@ public class PersistanceSQL {
                         leProduit = new Produit(res.getString(2), res.getString(3), res.getInt(4));
                     }
                     while (res.next()) {
-                        laCommande = new Commande(res.getInt(1), leProduit, res.getDouble(2), res.getString(3), res.getInt(4), res.getString(5));
+                        laCommande = new Commande(res.getInt(1), leProduit, res.getDouble(2), res.getString(3), res.getInt(4), res.getDate(5));
                     }
                     return laCommande;
                 }

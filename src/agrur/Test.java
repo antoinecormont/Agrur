@@ -5,9 +5,14 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
 import javax.xml.transform.TransformerException;
+import java.util.GregorianCalendar;
+import java.util.Calendar;
+import java.util.Date;
 
 
 public class Test {
+    
+   
     
     public static void main (String[] args) throws TransformerException, IOException, SQLException{
         Scanner LC = new Scanner(System.in);
@@ -15,9 +20,10 @@ public class Test {
         
         Produit p1 = new Produit("Mayette","Fraîche entière",2);
         Distributeur d1 = new Distributeur("22","Carreclerc");
-        Commande c1 = new Commande(1,p1,15.30,"Sachet",50,"2014-12-05");
-        Commande c2 = new Commande(2,p1,17,"Filet",70,"2014-12-05");
-        Commande c3 = new Commande(3,p1,22.60,"Carton",20,"2014-12-05");
+        DateCommande dateCmd = new DateCommande(2014,3,15);
+        Commande c1 = new Commande(1,p1,15.30,"Sachet",50,dateCmd);
+        Commande c2 = new Commande(2,p1,17,"Filet",70,dateCmd);
+        Commande c3 = new Commande(3,p1,22.60,"Carton",20,dateCmd);
         
         d1.addCommande(c1);
         d1.addCommande(c2);
