@@ -5,12 +5,15 @@
  */
 package agrur;
 
+import java.sql.Connection;
+
 /**
  *
  * @author sio
  */
 public class Accueil extends javax.swing.JFrame {
-
+    private PersistanceSQL bdd;
+    private Connection connect;
     /**
      * Creates new form Accueil
      */
@@ -28,59 +31,91 @@ public class Accueil extends javax.swing.JFrame {
     private void initComponents() {
 
         Menu = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        fichier = new javax.swing.JMenu();
+        fichier_deco = new javax.swing.JMenuItem();
+        fichier_fermer = new javax.swing.JMenuItem();
+        producteur = new javax.swing.JMenu();
+        producteur_ajouter = new javax.swing.JMenuItem();
+        producteur_modifier = new javax.swing.JMenuItem();
+        producteur_supprimer = new javax.swing.JMenuItem();
+        client = new javax.swing.JMenu();
+        client_ajouter = new javax.swing.JMenuItem();
+        client_modifier = new javax.swing.JMenuItem();
+        client_supprimer = new javax.swing.JMenuItem();
+        commandes = new javax.swing.JMenu();
+        commandes_ajouter = new javax.swing.JMenuItem();
+        commandes_modifier = new javax.swing.JMenuItem();
+        commandes_consulter = new javax.swing.JMenuItem();
+        commandes_supprimer = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Fichier");
+        fichier.setText("Fichier");
 
-        jMenuItem2.setText("Déconnexion");
-        jMenu1.add(jMenuItem2);
+        fichier_deco.setText("Déconnexion");
+        fichier_deco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fichier_decoActionPerformed(evt);
+            }
+        });
+        fichier.add(fichier_deco);
 
-        Menu.add(jMenu1);
+        fichier_fermer.setText("Fermer");
+        fichier_fermer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fichier_fermerActionPerformed(evt);
+            }
+        });
+        fichier.add(fichier_fermer);
 
-        jMenu2.setText("Client");
+        Menu.add(fichier);
 
-        jMenuItem3.setText("Ajouter");
-        jMenu2.add(jMenuItem3);
+        producteur.setText("Producteur");
 
-        jMenuItem4.setText("Modifier");
-        jMenu2.add(jMenuItem4);
+        producteur_ajouter.setText("Ajouter");
+        producteur_ajouter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                producteur_ajouterActionPerformed(evt);
+            }
+        });
+        producteur.add(producteur_ajouter);
 
-        jMenuItem5.setText("Supprimer");
-        jMenu2.add(jMenuItem5);
+        producteur_modifier.setText("Modifier");
+        producteur.add(producteur_modifier);
 
-        Menu.add(jMenu2);
+        producteur_supprimer.setText("Supprimer");
+        producteur.add(producteur_supprimer);
 
-        jMenu3.setText("Commandes");
+        Menu.add(producteur);
 
-        jMenuItem6.setText("Ajouter");
-        jMenu3.add(jMenuItem6);
+        client.setText("Client");
 
-        jMenuItem7.setText("Modifier");
-        jMenu3.add(jMenuItem7);
+        client_ajouter.setText("Ajouter");
+        client.add(client_ajouter);
 
-        jMenuItem8.setText("Consulter (format XML)");
-        jMenu3.add(jMenuItem8);
+        client_modifier.setText("Modifier");
+        client.add(client_modifier);
 
-        jMenuItem9.setText("Supprimer");
-        jMenu3.add(jMenuItem9);
+        client_supprimer.setText("Supprimer");
+        client.add(client_supprimer);
 
-        Menu.add(jMenu3);
+        Menu.add(client);
 
-        jMenu4.setText("Exportation");
-        Menu.add(jMenu4);
+        commandes.setText("Commandes");
+
+        commandes_ajouter.setText("Ajouter");
+        commandes.add(commandes_ajouter);
+
+        commandes_modifier.setText("Modifier");
+        commandes.add(commandes_modifier);
+
+        commandes_consulter.setText("Consulter (format XML)");
+        commandes.add(commandes_consulter);
+
+        commandes_supprimer.setText("Supprimer");
+        commandes.add(commandes_supprimer);
+
+        Menu.add(commandes);
 
         setJMenuBar(Menu);
 
@@ -97,6 +132,24 @@ public class Accueil extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void fichier_fermerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fichier_fermerActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_fichier_fermerActionPerformed
+
+    private void fichier_decoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fichier_decoActionPerformed
+        Connexion fen = new Connexion();
+        fen.setTitle("Connexion");
+        fen.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_fichier_decoActionPerformed
+
+    private void producteur_ajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_producteur_ajouterActionPerformed
+        AjoutProd ajoutProd = new AjoutProd();
+        ajoutProd.setTitle("Ajouter un producteur");
+        ajoutProd.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_producteur_ajouterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,26 +181,28 @@ public class Accueil extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Accueil fen = new Accueil();
-                fen.setTitle("Acceuil");
-                fen.setVisible(true);
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar Menu;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenu client;
+    private javax.swing.JMenuItem client_ajouter;
+    private javax.swing.JMenuItem client_modifier;
+    private javax.swing.JMenuItem client_supprimer;
+    private javax.swing.JMenu commandes;
+    private javax.swing.JMenuItem commandes_ajouter;
+    private javax.swing.JMenuItem commandes_consulter;
+    private javax.swing.JMenuItem commandes_modifier;
+    private javax.swing.JMenuItem commandes_supprimer;
+    private javax.swing.JMenu fichier;
+    private javax.swing.JMenuItem fichier_deco;
+    private javax.swing.JMenuItem fichier_fermer;
+    private javax.swing.JMenu producteur;
+    private javax.swing.JMenuItem producteur_ajouter;
+    private javax.swing.JMenuItem producteur_modifier;
+    private javax.swing.JMenuItem producteur_supprimer;
     // End of variables declaration//GEN-END:variables
 }
