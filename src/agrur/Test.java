@@ -20,10 +20,9 @@ public class Test {
         
         Produit p1 = new Produit("Mayette","Fraîche entière",2);
         Distributeur d1 = new Distributeur("22","Carreclerc");
-        DateCommande dateCmd = new DateCommande(2014,3,15);
-        Commande c1 = new Commande(1,p1,15.30,"Sachet",50,dateCmd);
-        Commande c2 = new Commande(2,p1,17,"Filet",70,dateCmd);
-        Commande c3 = new Commande(3,p1,22.60,"Carton",20,dateCmd);
+        Commande c1 = new Commande(1,p1,15.30,"Sachet",50,"2014-05-16");
+        Commande c2 = new Commande(2,p1,17,"Filet",70,"2014-04-12");
+        Commande c3 = new Commande(3,p1,22.60,"Carton",20,"2014-03-8");
         
         d1.addCommande(c1);
         d1.addCommande(c2);
