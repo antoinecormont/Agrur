@@ -1,8 +1,8 @@
 package agrur;
 
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
 * Classe Java Commande de l'application pour Agrur
@@ -34,8 +34,8 @@ public class Commande {
     private double prixHT;   
     private String conditionnement;   
     private int quantite;      
-    private Date dateConditionnement; 
-    private Date dateEnvoi;   
+    private String dateConditionnement; 
+    private String dateEnvoi;   
     GregorianCalendar calendar = new java.util.GregorianCalendar();
 
     /**
@@ -54,16 +54,13 @@ public class Commande {
     * @param dateConditionnement
     *       date de conditionnement de la commande.
     */
-    public Commande(int id, Produit leProduit, double prixHT, String conditionnement, int quantite, Date dateConditionnement) {
+    public Commande(int id, Produit leProduit, double prixHT, String conditionnement, int quantite, String dateConditionnement) {
         this.id = id;
         this.leProduit = leProduit;
         this.prixHT = prixHT;
         this.conditionnement = conditionnement;
         this.quantite = quantite;
         this.dateConditionnement = dateConditionnement;
-        calendar.setTime(dateConditionnement);
-        dateEnvoi = dateConditionnement;
-        calendar.add(Calendar.DATE, +15);
         this.dateEnvoi = dateEnvoi;
     }
     
@@ -119,7 +116,7 @@ public class Commande {
      * @return dateConditionnement
      *                  la date de conditionnement de la commande
     */
-    public Date getDateConditionnement() {
+    public String getDateConditionnement() {
         return dateConditionnement;
     }
 
@@ -128,7 +125,7 @@ public class Commande {
      * @return dateEnvoi
      *              retourne la date d'envvoi de la commande
     */
-    public Date getDateEnvoi() {
+    public String getDateEnvoi() {
         return dateEnvoi;
     }
     
@@ -137,7 +134,7 @@ public class Commande {
      * @param nDateEnvoi
      *              la nouvelle date d'envoi
     */
-    public void setDateEnvoi(Date nDateEnvoi) {
+    public void setDateEnvoi(String nDateEnvoi) {
         this.dateEnvoi = nDateEnvoi;
     }
 
