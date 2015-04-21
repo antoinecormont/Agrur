@@ -9,25 +9,26 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.YES_NO_OPTION;
 
 /**
  *
  * @author sio
  */
-public class AjoutProd extends javax.swing.JFrame {
+public class ModifProd extends javax.swing.JFrame {
 
     private PersistanceSQL bdd;
     private Connection connect;
 
     /**
-     * Creates new form AjoutProd
+     * Creates new form ModifProd
      */
-    public AjoutProd() {
+    public ModifProd() {
         initComponents();
     }
 
@@ -40,31 +41,31 @@ public class AjoutProd extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        id = new javax.swing.JTextField();
         nom = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        ajouter = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        retour_accueil = new javax.swing.JMenu();
+        modifier = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        id = new javax.swing.JTextField();
+        menu = new javax.swing.JMenuBar();
+        fichier = new javax.swing.JMenu();
         fichier_retour = new javax.swing.JMenuItem();
         fichier_deco = new javax.swing.JMenuItem();
         fichier_fermer = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Identifiant :");
+        jLabel2.setText("Nouveau nom du producteur :");
 
-        jLabel2.setText("Nom :");
-
-        ajouter.setText("Ajouter");
-        ajouter.addActionListener(new java.awt.event.ActionListener() {
+        modifier.setText("Modifier");
+        modifier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ajouterActionPerformed(evt);
+                modifierActionPerformed(evt);
             }
         });
 
-        retour_accueil.setText("Fichier");
+        jLabel1.setText("Identifiant du producteur à modifier :");
+
+        fichier.setText("Fichier");
 
         fichier_retour.setText("Retour à l'accueil");
         fichier_retour.addActionListener(new java.awt.event.ActionListener() {
@@ -72,7 +73,7 @@ public class AjoutProd extends javax.swing.JFrame {
                 fichier_retourActionPerformed(evt);
             }
         });
-        retour_accueil.add(fichier_retour);
+        fichier.add(fichier_retour);
 
         fichier_deco.setText("Deconnexion");
         fichier_deco.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +81,7 @@ public class AjoutProd extends javax.swing.JFrame {
                 fichier_decoActionPerformed(evt);
             }
         });
-        retour_accueil.add(fichier_deco);
+        fichier.add(fichier_deco);
 
         fichier_fermer.setText("Fermer");
         fichier_fermer.addActionListener(new java.awt.event.ActionListener() {
@@ -88,36 +89,32 @@ public class AjoutProd extends javax.swing.JFrame {
                 fichier_fermerActionPerformed(evt);
             }
         });
-        retour_accueil.add(fichier_fermer);
+        fichier.add(fichier_fermer);
 
-        jMenuBar1.add(retour_accueil);
+        menu.add(fichier);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(129, 129, 129)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nom)
-                            .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(ajouter)
-                        .addGap(23, 23, 23)))
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addGap(64, 64, 64)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(modifier)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(nom)
+                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(76, Short.MAX_VALUE)
+                .addContainerGap(94, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -125,9 +122,9 @@ public class AjoutProd extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(35, 35, 35)
-                .addComponent(ajouter)
-                .addGap(94, 94, 94))
+                .addGap(31, 31, 31)
+                .addComponent(modifier)
+                .addGap(80, 80, 80))
         );
 
         pack();
@@ -151,7 +148,7 @@ public class AjoutProd extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_fichier_retourActionPerformed
 
-    private void ajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouterActionPerformed
+    private void modifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifierActionPerformed
         try {
             bdd = new PersistanceSQL("root", "", "jdbc:mysql://localhost/gestcommande", "org.gjt.mm.mysql.Driver");
             Class.forName("org.gjt.mm.mysql.Driver");
@@ -159,28 +156,35 @@ public class AjoutProd extends javax.swing.JFrame {
 
             String identifiant = id.getText();
             String nomProd = nom.getText();
-            int droit = 1;
 
             if (identifiant.equals("") || nomProd.equals("")) {
                 JOptionPane.showMessageDialog(this, "Tous les champs ne sont pas complétés.");
             } else {
-                //Ajout dans la table distributeur.
-                String libRequete = "INSERT INTO distributeur VALUES(?, ?)";
-                PreparedStatement requetePrepare = connect.prepareStatement(libRequete);
-                requetePrepare.setString(1, identifiant);
-                requetePrepare.setString(2, nomProd);
-                requetePrepare.executeUpdate();
-                
-                //Ajout dans la table identification.
-                String libRequete2 = "INSERT INTO identification VALUES(?, ?, ?)";
-                PreparedStatement requetePrepare2 = connect.prepareStatement(libRequete2);
-                requetePrepare2.setString(1, identifiant);
-                requetePrepare2.setString(2, identifiant);
-                requetePrepare2.setInt(3, droit);
-                requetePrepare2.executeUpdate();
-                
-                //Message de validation.
-                JOptionPane.showMessageDialog(this, "Ajout du producteur réussi.");
+                String libRequete = "SELECT idDistributeur,nomDistributeur FROM distributeur WHERE idDistributeur=?";
+                PreparedStatement reqExe = connect.prepareStatement(libRequete);
+                reqExe.setString(1, identifiant);
+                ResultSet res = reqExe.executeQuery();
+                if (res.next()) {
+                    JOptionPane d = new JOptionPane();
+                    int retour = d.showConfirmDialog(this, "Êtes-vous sûr de vouloir modifier le nom du producteur " + identifiant + " ?", "Validation", YES_NO_OPTION);
+                    if (retour == 0) {
+                        //Modification de la table distributeur.
+                        String libRequete2 = "UPDATE distributeur SET nomDistributeur=? WHERE idDistributeur=?";
+                        PreparedStatement requetePrepare2 = connect.prepareStatement(libRequete2);
+                        requetePrepare2.setString(1, nomProd);
+                        requetePrepare2.setString(2, identifiant);
+                        requetePrepare2.executeUpdate();
+
+                        //Message de validation.
+                        JOptionPane.showMessageDialog(this, "Modification du producteur réussie.");
+                        id.setText("");
+                        nom.setText("");
+                    } else {
+                        nom.setText("");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Identifiant incorrect, le producteur " + identifiant + " n'existe pas.");
+                }
             }
 
         } catch (IOException ex) {
@@ -190,7 +194,7 @@ public class AjoutProd extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AjoutProd.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_ajouterActionPerformed
+    }//GEN-LAST:event_modifierActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,34 +213,34 @@ public class AjoutProd extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AjoutProd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModifProd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AjoutProd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModifProd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AjoutProd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModifProd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AjoutProd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModifProd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AjoutProd().setVisible(true);
+                new ModifProd().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ajouter;
+    private javax.swing.JMenu fichier;
     private javax.swing.JMenuItem fichier_deco;
     private javax.swing.JMenuItem fichier_fermer;
     private javax.swing.JMenuItem fichier_retour;
     private javax.swing.JTextField id;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar menu;
+    private javax.swing.JButton modifier;
     private javax.swing.JTextField nom;
-    private javax.swing.JMenu retour_accueil;
     // End of variables declaration//GEN-END:variables
 }
