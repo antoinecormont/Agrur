@@ -38,10 +38,7 @@ public class Accueil extends javax.swing.JFrame {
         producteur_ajouter = new javax.swing.JMenuItem();
         producteur_modifier = new javax.swing.JMenuItem();
         producteur_supprimer = new javax.swing.JMenuItem();
-        client = new javax.swing.JMenu();
-        client_ajouter = new javax.swing.JMenuItem();
-        client_modifier = new javax.swing.JMenuItem();
-        client_supprimer = new javax.swing.JMenuItem();
+        producteur_liste = new javax.swing.JMenuItem();
         commandes = new javax.swing.JMenu();
         commandes_ajouter = new javax.swing.JMenuItem();
         commandes_modifier = new javax.swing.JMenuItem();
@@ -81,25 +78,25 @@ public class Accueil extends javax.swing.JFrame {
         producteur.add(producteur_ajouter);
 
         producteur_modifier.setText("Modifier");
+        producteur_modifier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                producteur_modifierActionPerformed(evt);
+            }
+        });
         producteur.add(producteur_modifier);
 
         producteur_supprimer.setText("Supprimer");
+        producteur_supprimer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                producteur_supprimerActionPerformed(evt);
+            }
+        });
         producteur.add(producteur_supprimer);
 
+        producteur_liste.setText("Liste des producteurs");
+        producteur.add(producteur_liste);
+
         Menu.add(producteur);
-
-        client.setText("Client");
-
-        client_ajouter.setText("Ajouter");
-        client.add(client_ajouter);
-
-        client_modifier.setText("Modifier");
-        client.add(client_modifier);
-
-        client_supprimer.setText("Supprimer");
-        client.add(client_supprimer);
-
-        Menu.add(client);
 
         commandes.setText("Commandes");
 
@@ -151,6 +148,20 @@ public class Accueil extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_producteur_ajouterActionPerformed
 
+    private void producteur_modifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_producteur_modifierActionPerformed
+        ModifProd modifProd = new ModifProd();
+        modifProd.setTitle("Modifier un producteur");
+        modifProd.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_producteur_modifierActionPerformed
+
+    private void producteur_supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_producteur_supprimerActionPerformed
+        SupprProd supprProd = new SupprProd();
+        supprProd.setTitle("Supprimer un producteur");
+        supprProd.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_producteur_supprimerActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -188,10 +199,6 @@ public class Accueil extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar Menu;
-    private javax.swing.JMenu client;
-    private javax.swing.JMenuItem client_ajouter;
-    private javax.swing.JMenuItem client_modifier;
-    private javax.swing.JMenuItem client_supprimer;
     private javax.swing.JMenu commandes;
     private javax.swing.JMenuItem commandes_ajouter;
     private javax.swing.JMenuItem commandes_consulter;
@@ -202,6 +209,7 @@ public class Accueil extends javax.swing.JFrame {
     private javax.swing.JMenuItem fichier_fermer;
     private javax.swing.JMenu producteur;
     private javax.swing.JMenuItem producteur_ajouter;
+    private javax.swing.JMenuItem producteur_liste;
     private javax.swing.JMenuItem producteur_modifier;
     private javax.swing.JMenuItem producteur_supprimer;
     // End of variables declaration//GEN-END:variables

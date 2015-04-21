@@ -61,7 +61,6 @@ public class PersistanceSQL {
             // Connexion avec la BDD
             Class.forName(driverSGBD);
             con = DriverManager.getConnection(serveurBD, nomUtilisateur, motDePasse);
-            System.out.println("connexion ok");
         }
         // Excetpion s'il ne troue pas la classe
         catch (ClassNotFoundException ex) {
