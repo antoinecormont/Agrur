@@ -131,8 +131,8 @@ public class Connexion extends javax.swing.JFrame {
                     this.setVisible(false);
                 }
                 else{
-                    AccueilProd accueilProd = new AccueilProd();
-                    accueilProd.setTitle("Acceuil");
+                    AccueilProd accueilProd = new AccueilProd(log);
+                    accueilProd.setTitle("Acceuil - " + log);
                     accueilProd.setVisible(true);
                     this.setVisible(false);
                 }

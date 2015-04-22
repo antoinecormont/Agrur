@@ -27,6 +27,26 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="commandes">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Commandes"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="commandes_creer">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cr&#xe9;er"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="commandes_creerActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="commandes_cours">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Consulter les commandes en cours (XML)"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
       </SubComponents>
     </Menu>
   </NonVisualComponents>

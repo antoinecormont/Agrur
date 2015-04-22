@@ -10,12 +10,15 @@ package agrur;
  * @author sio
  */
 public class AccueilProd extends javax.swing.JFrame {
-
+    
+    private String log;
+    
     /**
      * Creates new form AccueilProd
      */
-    public AccueilProd() {
+    public AccueilProd(String login) {
         initComponents();
+        log = login;
     }
 
     /**
@@ -31,6 +34,9 @@ public class AccueilProd extends javax.swing.JFrame {
         fichier = new javax.swing.JMenu();
         fichier_deco = new javax.swing.JMenuItem();
         fichier_fermer = new javax.swing.JMenuItem();
+        commandes = new javax.swing.JMenu();
+        commandes_creer = new javax.swing.JMenuItem();
+        commandes_cours = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,6 +59,21 @@ public class AccueilProd extends javax.swing.JFrame {
         fichier.add(fichier_fermer);
 
         jMenuBar1.add(fichier);
+
+        commandes.setText("Commandes");
+
+        commandes_creer.setText("Créer");
+        commandes_creer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                commandes_creerActionPerformed(evt);
+            }
+        });
+        commandes.add(commandes_creer);
+
+        commandes_cours.setText("Consulter les commandes en cours (XML)");
+        commandes.add(commandes_cours);
+
+        jMenuBar1.add(commandes);
 
         setJMenuBar(jMenuBar1);
 
@@ -80,6 +101,13 @@ public class AccueilProd extends javax.swing.JFrame {
     private void fichier_fermerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fichier_fermerActionPerformed
         this.dispose();
     }//GEN-LAST:event_fichier_fermerActionPerformed
+
+    private void commandes_creerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commandes_creerActionPerformed
+        CreerCommande creerCommande = new CreerCommande(log);
+        creerCommande.setTitle("Créer une commande - " + log);
+        creerCommande.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_commandes_creerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -111,12 +139,15 @@ public class AccueilProd extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AccueilProd().setVisible(true);
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu commandes;
+    private javax.swing.JMenuItem commandes_cours;
+    private javax.swing.JMenuItem commandes_creer;
     private javax.swing.JMenu fichier;
     private javax.swing.JMenuItem fichier_deco;
     private javax.swing.JMenuItem fichier_fermer;
