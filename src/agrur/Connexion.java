@@ -131,7 +131,10 @@ public class Connexion extends javax.swing.JFrame {
                     this.setVisible(false);
                 }
                 else{
-                    System.out.println("Producteur " + res.getString(1));
+                    AccueilProd accueilProd = new AccueilProd();
+                    accueilProd.setTitle("Acceuil");
+                    accueilProd.setVisible(true);
+                    this.setVisible(false);
                 }
             }
             else{

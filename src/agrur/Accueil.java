@@ -38,7 +38,6 @@ public class Accueil extends javax.swing.JFrame {
         producteur_ajouter = new javax.swing.JMenuItem();
         producteur_modifier = new javax.swing.JMenuItem();
         producteur_supprimer = new javax.swing.JMenuItem();
-        producteur_liste = new javax.swing.JMenuItem();
         commandes = new javax.swing.JMenu();
         commandes_ajouter = new javax.swing.JMenuItem();
         commandes_modifier = new javax.swing.JMenuItem();
@@ -92,9 +91,6 @@ public class Accueil extends javax.swing.JFrame {
             }
         });
         producteur.add(producteur_supprimer);
-
-        producteur_liste.setText("Liste des producteurs");
-        producteur.add(producteur_liste);
 
         Menu.add(producteur);
 
@@ -208,7 +204,6 @@ public class Accueil extends javax.swing.JFrame {
     private javax.swing.JMenuItem fichier_fermer;
     private javax.swing.JMenu producteur;
     private javax.swing.JMenuItem producteur_ajouter;
-    private javax.swing.JMenuItem producteur_liste;
     private javax.swing.JMenuItem producteur_modifier;
     private javax.swing.JMenuItem producteur_supprimer;
     // End of variables declaration//GEN-END:variables
