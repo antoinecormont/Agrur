@@ -152,6 +152,7 @@ public class ListeProd extends javax.swing.JFrame {
         });
     }
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu fichier;
     private javax.swing.JMenuItem fichier_deco;

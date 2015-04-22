@@ -161,7 +161,6 @@ public class Accueil extends javax.swing.JFrame {
         supprProd.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_producteur_supprimerActionPerformed
-
     /**
      * @param args the command line arguments
      */

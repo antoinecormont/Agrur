@@ -137,6 +137,7 @@ public class SupprProd extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_fichier_fermerActionPerformed
 
+    
     private void supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprimerActionPerformed
         try {
             bdd = new PersistanceSQL("root", "", "jdbc:mysql://localhost/gestcommande", "org.gjt.mm.mysql.Driver");
