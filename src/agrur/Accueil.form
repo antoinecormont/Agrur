@@ -63,24 +63,9 @@
             <Property name="text" type="java.lang.String" value="Commandes"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="commandes_ajouter">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Ajouter"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="commandes_modifier">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Modifier"/>
-              </Properties>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="commandes_consulter">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Consulter (format XML)"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="commandes_supprimer">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Supprimer"/>
               </Properties>
             </MenuItem>
           </SubComponents>

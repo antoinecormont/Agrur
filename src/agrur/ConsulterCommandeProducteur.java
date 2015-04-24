@@ -9,14 +9,14 @@ package agrur;
  *
  * @author sio
  */
-public class AccueilProd extends javax.swing.JFrame {
-    
-    private String log;
-    
+public class ConsulterCommandeProducteur extends javax.swing.JFrame {
+
+    String log;
+
     /**
-     * Creates new form AccueilProd
+     * Creates new form ConsulterCommandeProducteur
      */
-    public AccueilProd(String login) {
+    public ConsulterCommandeProducteur(String login) {
         initComponents();
         log = login;
     }
@@ -31,16 +31,22 @@ public class AccueilProd extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
-        fichier = new javax.swing.JMenu();
+        fermer = new javax.swing.JMenu();
+        fichier_retour = new javax.swing.JMenuItem();
         fichier_deco = new javax.swing.JMenuItem();
         fichier_fermer = new javax.swing.JMenuItem();
-        commandes = new javax.swing.JMenu();
-        commandes_creer = new javax.swing.JMenuItem();
-        commandes_cours = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        fichier.setText("Fichier");
+        fermer.setText("Fichier");
+
+        fichier_retour.setText("Retour à l'accueil");
+        fichier_retour.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fichier_retourActionPerformed(evt);
+            }
+        });
+        fermer.add(fichier_retour);
 
         fichier_deco.setText("Deconnexion");
         fichier_deco.addActionListener(new java.awt.event.ActionListener() {
@@ -48,7 +54,7 @@ public class AccueilProd extends javax.swing.JFrame {
                 fichier_decoActionPerformed(evt);
             }
         });
-        fichier.add(fichier_deco);
+        fermer.add(fichier_deco);
 
         fichier_fermer.setText("Fermer");
         fichier_fermer.addActionListener(new java.awt.event.ActionListener() {
@@ -56,29 +62,9 @@ public class AccueilProd extends javax.swing.JFrame {
                 fichier_fermerActionPerformed(evt);
             }
         });
-        fichier.add(fichier_fermer);
+        fermer.add(fichier_fermer);
 
-        jMenuBar1.add(fichier);
-
-        commandes.setText("Commandes");
-
-        commandes_creer.setText("Créer");
-        commandes_creer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                commandes_creerActionPerformed(evt);
-            }
-        });
-        commandes.add(commandes_creer);
-
-        commandes_cours.setText("Consulter les commandes en cours (XML)");
-        commandes_cours.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                commandes_coursActionPerformed(evt);
-            }
-        });
-        commandes.add(commandes_cours);
-
-        jMenuBar1.add(commandes);
+        jMenuBar1.add(fermer);
 
         setJMenuBar(jMenuBar1);
 
@@ -96,6 +82,13 @@ public class AccueilProd extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void fichier_retourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fichier_retourActionPerformed
+        Accueil accueil = new Accueil();
+        accueil.setTitle("Acceuil");
+        accueil.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_fichier_retourActionPerformed
+
     private void fichier_decoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fichier_decoActionPerformed
         Connexion fen = new Connexion();
         fen.setTitle("Connexion");
@@ -106,20 +99,6 @@ public class AccueilProd extends javax.swing.JFrame {
     private void fichier_fermerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fichier_fermerActionPerformed
         this.dispose();
     }//GEN-LAST:event_fichier_fermerActionPerformed
-
-    private void commandes_creerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commandes_creerActionPerformed
-        CreerCommande creerCommande = new CreerCommande(log);
-        creerCommande.setTitle("Créer une commande - " + log);
-        creerCommande.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_commandes_creerActionPerformed
-
-    private void commandes_coursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commandes_coursActionPerformed
-        ConsulterCommandeProducteur consulterCommandeProducteur = new ConsulterCommandeProducteur(log);
-        consulterCommandeProducteur.setTitle("Consulter les commandes en cours - " + log);
-        consulterCommandeProducteur.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_commandes_coursActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,31 +117,29 @@ public class AccueilProd extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AccueilProd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsulterCommandeProducteur.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AccueilProd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsulterCommandeProducteur.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AccueilProd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsulterCommandeProducteur.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AccueilProd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsulterCommandeProducteur.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu commandes;
-    private javax.swing.JMenuItem commandes_cours;
-    private javax.swing.JMenuItem commandes_creer;
-    private javax.swing.JMenu fichier;
+    private javax.swing.JMenu fermer;
     private javax.swing.JMenuItem fichier_deco;
     private javax.swing.JMenuItem fichier_fermer;
+    private javax.swing.JMenuItem fichier_retour;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

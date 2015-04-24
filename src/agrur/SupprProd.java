@@ -181,11 +181,11 @@ public class SupprProd extends javax.swing.JFrame {
             }
 
         } catch (IOException ex) {
-            Logger.getLogger(AjoutProd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SupprProd.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(AjoutProd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SupprProd.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AjoutProd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SupprProd.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_supprimerActionPerformed
 

@@ -187,13 +187,12 @@ public class ModifProd extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Identifiant incorrect, le producteur " + identifiant + " n'existe pas.");
                 }
             }
-
         } catch (IOException ex) {
-            Logger.getLogger(AjoutProd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModifProd.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(AjoutProd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModifProd.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AjoutProd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModifProd.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_modifierActionPerformed
 

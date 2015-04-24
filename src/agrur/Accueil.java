@@ -39,10 +39,7 @@ public class Accueil extends javax.swing.JFrame {
         producteur_modifier = new javax.swing.JMenuItem();
         producteur_supprimer = new javax.swing.JMenuItem();
         commandes = new javax.swing.JMenu();
-        commandes_ajouter = new javax.swing.JMenuItem();
-        commandes_modifier = new javax.swing.JMenuItem();
         commandes_consulter = new javax.swing.JMenuItem();
-        commandes_supprimer = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,17 +93,8 @@ public class Accueil extends javax.swing.JFrame {
 
         commandes.setText("Commandes");
 
-        commandes_ajouter.setText("Ajouter");
-        commandes.add(commandes_ajouter);
-
-        commandes_modifier.setText("Modifier");
-        commandes.add(commandes_modifier);
-
         commandes_consulter.setText("Consulter (format XML)");
         commandes.add(commandes_consulter);
-
-        commandes_supprimer.setText("Supprimer");
-        commandes.add(commandes_supprimer);
 
         Menu.add(commandes);
 
@@ -195,10 +183,7 @@ public class Accueil extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar Menu;
     private javax.swing.JMenu commandes;
-    private javax.swing.JMenuItem commandes_ajouter;
     private javax.swing.JMenuItem commandes_consulter;
-    private javax.swing.JMenuItem commandes_modifier;
-    private javax.swing.JMenuItem commandes_supprimer;
     private javax.swing.JMenu fichier;
     private javax.swing.JMenuItem fichier_deco;
     private javax.swing.JMenuItem fichier_fermer;

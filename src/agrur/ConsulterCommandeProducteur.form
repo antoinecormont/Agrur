@@ -4,11 +4,19 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="fichier">
+        <Menu class="javax.swing.JMenu" name="fermer">
           <Properties>
             <Property name="text" type="java.lang.String" value="Fichier"/>
           </Properties>
           <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="fichier_retour">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Retour &#xe0; l&apos;accueil"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fichier_retourActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="fichier_deco">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Deconnexion"/>
@@ -23,29 +31,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fichier_fermerActionPerformed"/>
-              </Events>
-            </MenuItem>
-          </SubComponents>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="commandes">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Commandes"/>
-          </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="commandes_creer">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Cr&#xe9;er"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="commandes_creerActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="commandes_cours">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Consulter les commandes en cours (XML)"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="commandes_coursActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
