@@ -243,7 +243,7 @@ public class CreerCommande extends javax.swing.JFrame {
     }//GEN-LAST:event_validerActionPerformed
 
     private void fichier_retourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fichier_retourActionPerformed
-        Accueil accueil = new Accueil();
+        AccueilProd accueil = new AccueilProd(log);
         accueil.setTitle("Acceuil");
         accueil.setVisible(true);
         this.setVisible(false);

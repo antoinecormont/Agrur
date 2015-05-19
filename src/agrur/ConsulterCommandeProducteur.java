@@ -5,12 +5,25 @@
  */
 package agrur;
 
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author sio
  */
 public class ConsulterCommandeProducteur extends javax.swing.JFrame {
 
+    private PersistanceSQL bdd;
+    private Connection connect;
     String log;
 
     /**
@@ -30,6 +43,7 @@ public class ConsulterCommandeProducteur extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        consulter = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         fermer = new javax.swing.JMenu();
         fichier_retour = new javax.swing.JMenuItem();
@@ -37,6 +51,13 @@ public class ConsulterCommandeProducteur extends javax.swing.JFrame {
         fichier_fermer = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        consulter.setText("Consulter");
+        consulter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consulterActionPerformed(evt);
+            }
+        });
 
         fermer.setText("Fichier");
 
@@ -72,18 +93,24 @@ public class ConsulterCommandeProducteur extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(179, 179, 179)
+                .addComponent(consulter)
+                .addContainerGap(183, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(123, 123, 123)
+                .addComponent(consulter)
+                .addContainerGap(133, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void fichier_retourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fichier_retourActionPerformed
-        Accueil accueil = new Accueil();
+        AccueilProd accueil = new AccueilProd(log);
         accueil.setTitle("Acceuil");
         accueil.setVisible(true);
         this.setVisible(false);
@@ -99,6 +126,61 @@ public class ConsulterCommandeProducteur extends javax.swing.JFrame {
     private void fichier_fermerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fichier_fermerActionPerformed
         this.dispose();
     }//GEN-LAST:event_fichier_fermerActionPerformed
+
+    private void consulterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consulterActionPerformed
+        try {
+            bdd = new PersistanceSQL("root", "", "jdbc:mysql://localhost/gestcommande", "org.gjt.mm.mysql.Driver");
+            Class.forName("org.gjt.mm.mysql.Driver");
+            connect = DriverManager.getConnection("jdbc:mysql://localhost/gestcommande", "root", "");
+
+            String libRequete = "SELECT prixHT,conditionnement,quantite,dateConditionnement,dateEnvoi,idProduit FROM commande WHERE idDistributeur=?";
+            PreparedStatement reqExe = connect.prepareStatement(libRequete);
+            reqExe.setString(2, log);
+            ResultSet res = reqExe.executeQuery();
+            if (res.next()) {
+                if (res.getDate(5) == null) {
+                    int idProd = res.getInt(6);
+                    String libRequete2 = "SELECT varieteProduit,typeProduit,calibreProduit FROM produit WHERE idProduit=?";
+                    PreparedStatement reqExe2 = connect.prepareStatement(libRequete2);
+                    reqExe2.setInt(1, idProd);
+                    ResultSet res2 = reqExe2.executeQuery();
+                    if (res2.next()) {
+                        String variete = res2.getString(1);
+                        String type = res2.getString(2);
+                        int calibre = res2.getInt(3);
+                        Produit produit = new Produit(variete, type, calibre);
+
+                        String libRequete3 = "SELECT nomDistributeur FROM distributeur WHERE idDistributeur=?";
+                        PreparedStatement reqExe3 = connect.prepareStatement(libRequete3);
+                        reqExe3.setString(1, log);
+                        ResultSet res3 = reqExe3.executeQuery();
+                        if (res3.next()) {
+                            String nom = res3.getString(1);
+                            Distributeur distributeur = new Distributeur(log, nom);
+                            double prixHT = res.getDouble(1);
+                            String conditionnement = res.getString(2);
+                            int quantite = res.getInt(3);
+                            String dateConditionnement = res.getDate(4) + "";
+                            /*
+                            Commande commande = new Commande(idCommande, produit, prixHT, conditionnement, quantite, dateConditionnement);
+                            String chaine = commande.XMLCommande();
+                            System.out.println(chaine);*/
+                        }
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "La commande que vous demandez est achevée.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Il n'existe aucune commande correspondant à cet identifiant.");
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_consulterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,6 +218,7 @@ public class ConsulterCommandeProducteur extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton consulter;
     private javax.swing.JMenu fermer;
     private javax.swing.JMenuItem fichier_deco;
     private javax.swing.JMenuItem fichier_fermer;
