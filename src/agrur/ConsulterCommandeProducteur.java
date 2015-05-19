@@ -5,6 +5,9 @@
  */
 package agrur;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,6 +18,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.xml.transform.TransformerException;
 
 /**
  *
@@ -24,6 +28,7 @@ public class ConsulterCommandeProducteur extends javax.swing.JFrame {
 
     private PersistanceSQL bdd;
     private Connection connect;
+    private BufferedWriter fw;
     String log;
 
     /**
@@ -111,7 +116,7 @@ public class ConsulterCommandeProducteur extends javax.swing.JFrame {
 
     private void fichier_retourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fichier_retourActionPerformed
         AccueilProd accueil = new AccueilProd(log);
-        accueil.setTitle("Acceuil");
+        accueil.setTitle("Acceuil - " + log);
         accueil.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_fichier_retourActionPerformed
@@ -132,62 +137,66 @@ public class ConsulterCommandeProducteur extends javax.swing.JFrame {
             bdd = new PersistanceSQL("root", "", "jdbc:mysql://localhost/gestcommande", "org.gjt.mm.mysql.Driver");
             Class.forName("org.gjt.mm.mysql.Driver");
             connect = DriverManager.getConnection("jdbc:mysql://localhost/gestcommande", "root", "");
-            
-            String req = "SELECT id AS nb FROM commande WHERE idDistributeur=?";
-            PreparedStatement exe = connect.prepareStatement(req);
-            exe.setString(1, log);
-            ResultSet r = exe.executeQuery();
-            int nb = 0;
-            if (r.next()) {
-                nb = r.getInt("nb");
-            }
-            
-            /*String libRequete = "SELECT prixHT,conditionnement,quantite,dateConditionnement,dateEnvoi,idProduit FROM commande WHERE idDistributeur=?";
-            PreparedStatement reqExe = connect.prepareStatement(libRequete);
-            reqExe.setString(1, log);
-            ResultSet res = reqExe.executeQuery();
-            if (res.next()) {
-                if (res.getDate(5) == null) {
-                    int idProd = res.getInt(6);
-                    String libRequete2 = "SELECT varieteProduit,typeProduit,calibreProduit FROM produit WHERE idProduit=?";
-                    PreparedStatement reqExe2 = connect.prepareStatement(libRequete2);
-                    reqExe2.setInt(1, idProd);
-                    ResultSet res2 = reqExe2.executeQuery();
-                    if (res2.next()) {
-                        String variete = res2.getString(1);
-                        String type = res2.getString(2);
-                        int calibre = res2.getInt(3);
-                        Produit produit = new Produit(variete, type, calibre);
 
-                        String libRequete3 = "SELECT nomDistributeur FROM distributeur WHERE idDistributeur=?";
-                        PreparedStatement reqExe3 = connect.prepareStatement(libRequete3);
-                        reqExe3.setString(1, log);
-                        ResultSet res3 = reqExe3.executeQuery();
-                        if (res3.next()) {
-                            String nom = res3.getString(1);
-                            Distributeur distributeur = new Distributeur(log, nom);
-                            double prixHT = res.getDouble(1);
-                            String conditionnement = res.getString(2);
-                            int quantite = res.getInt(3);
-                            String dateConditionnement = res.getDate(4) + "";
-                            
-                            Commande commande = new Commande(idCommande, produit, prixHT, conditionnement, quantite, dateConditionnement);
-                            String chaine = commande.XMLCommande();
-                            System.out.println(chaine);
+            String libRequete3 = "SELECT nomDistributeur FROM distributeur WHERE idDistributeur=?";
+            PreparedStatement reqExe3 = connect.prepareStatement(libRequete3);
+            reqExe3.setString(1, log);
+            ResultSet res3 = reqExe3.executeQuery();
+            if (res3.next()) {
+                String nom = res3.getString(1);
+                Distributeur distributeur = new Distributeur(log, nom);
+                
+                String libRequete = "SELECT id,prixHT,conditionnement,quantite,dateConditionnement,dateEnvoi,idProduit FROM commande WHERE idDistributeur=?";
+                PreparedStatement reqExe = connect.prepareStatement(libRequete);
+                reqExe.setString(1, log);
+                ResultSet res = reqExe.executeQuery();
+                if (res.next()) {
+                    do{
+                        int id = res.getInt(1);
+                        if (res.getDate(6) == null) {
+                            int idProd = res.getInt(7);
+                            String libRequete2 = "SELECT varieteProduit,typeProduit,calibreProduit FROM produit WHERE idProduit=?";
+                            PreparedStatement reqExe2 = connect.prepareStatement(libRequete2);
+                            reqExe2.setInt(1, idProd);
+                            ResultSet res2 = reqExe2.executeQuery();
+                            if (res2.next()) {
+                                String variete = res2.getString(1);
+                                String type = res2.getString(2);
+                                int calibre = res2.getInt(3);
+                                Produit produit = new Produit(variete, type, calibre);
+
+                                double prixHT = res.getDouble(2);
+                                String conditionnement = res.getString(3);
+                                int quantite = res.getInt(4);
+                                String dateConditionnement = res.getDate(5) + "";
+
+                                Commande commande = new Commande(id, produit, prixHT, conditionnement, quantite, dateConditionnement);
+
+                                distributeur.addCommande(commande);
+                            }
                         }
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(this, "La commande que vous demandez est achevée.");
+                        else{
+                            
+                        }
+                    }while(res.next());
+                    GestionCommandes gc = new GestionCommandes(bdd);
+                    String chaine = gc.XmlNonLivrees(distributeur);
+                    
+                    File fichier = new File("Commandes en cours - " + log +".txt");
+                    fw = new BufferedWriter(new FileWriter(fichier));
+                    fw.write(chaine.replace("\n","\r\n"));
+                    fw.close();
+                    //System.out.println(chaine);
                 }
-            } else {
-                JOptionPane.showMessageDialog(this, "Il n'existe aucune commande correspondant à cet identifiant.");
-            }*/
+            }
         } catch (IOException ex) {
             Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (TransformerException ex) {
+            Logger.getLogger(ConsulterCommandeProducteur.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_consulterActionPerformed
 

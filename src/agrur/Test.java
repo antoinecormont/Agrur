@@ -66,5 +66,6 @@ public class Test {
         PersistanceSQL ps = new PersistanceSQL("root", "", "jdbc:mysql://localhost/gestcommande", "org.gjt.mm.mysql.Driver");
         GestionCommandes gc = new GestionCommandes(ps);
         String chaine = gc.XmlNonLivrees(d1);
+        System.out.println(chaine);
     }
 }
