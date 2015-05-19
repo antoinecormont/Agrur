@@ -132,10 +132,19 @@ public class ConsulterCommandeProducteur extends javax.swing.JFrame {
             bdd = new PersistanceSQL("root", "", "jdbc:mysql://localhost/gestcommande", "org.gjt.mm.mysql.Driver");
             Class.forName("org.gjt.mm.mysql.Driver");
             connect = DriverManager.getConnection("jdbc:mysql://localhost/gestcommande", "root", "");
-
-            String libRequete = "SELECT prixHT,conditionnement,quantite,dateConditionnement,dateEnvoi,idProduit FROM commande WHERE idDistributeur=?";
+            
+            String req = "SELECT id AS nb FROM commande WHERE idDistributeur=?";
+            PreparedStatement exe = connect.prepareStatement(req);
+            exe.setString(1, log);
+            ResultSet r = exe.executeQuery();
+            int nb = 0;
+            if (r.next()) {
+                nb = r.getInt("nb");
+            }
+            
+            /*String libRequete = "SELECT prixHT,conditionnement,quantite,dateConditionnement,dateEnvoi,idProduit FROM commande WHERE idDistributeur=?";
             PreparedStatement reqExe = connect.prepareStatement(libRequete);
-            reqExe.setString(2, log);
+            reqExe.setString(1, log);
             ResultSet res = reqExe.executeQuery();
             if (res.next()) {
                 if (res.getDate(5) == null) {
@@ -161,10 +170,10 @@ public class ConsulterCommandeProducteur extends javax.swing.JFrame {
                             String conditionnement = res.getString(2);
                             int quantite = res.getInt(3);
                             String dateConditionnement = res.getDate(4) + "";
-                            /*
+                            
                             Commande commande = new Commande(idCommande, produit, prixHT, conditionnement, quantite, dateConditionnement);
                             String chaine = commande.XMLCommande();
-                            System.out.println(chaine);*/
+                            System.out.println(chaine);
                         }
                     }
                 } else {
@@ -172,7 +181,7 @@ public class ConsulterCommandeProducteur extends javax.swing.JFrame {
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "Il n'existe aucune commande correspondant à cet identifiant.");
-            }
+            }*/
         } catch (IOException ex) {
             Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
