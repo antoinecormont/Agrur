@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<commandes idDistributeur="carr15432" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<commande id="213">
+<produit variete="Mayette" type="Fraiche Entière" calibre="2" />
+<conditionnement type="filet 1kg" />
+<quantite>50</quantite>
+<date_conditionnement>2014-05-12</date_conditionnement>
+<date_envoi>null</date_envoi>
+</commande>
+<commande id="215">
+<produit variete="Mayette" type="Fraiche Entière" calibre="2" />
+<conditionnement type="filet 5kg" />
+<quantite>100</quantite>
+<date_conditionnement>2014-05-08</date_conditionnement>
+<date_envoi>null</date_envoi>
+</commande>
+<commande id="216">
+<produit variete="Corne du Périgord" type="Noix de table" calibre="1" />
+<conditionnement type="filet 1kg" />
+<quantite>100</quantite>
+<date_conditionnement>2015-05-19</date_conditionnement>
+<date_envoi>null</date_envoi>
+</commande>
+</commandes>

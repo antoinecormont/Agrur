@@ -38,8 +38,7 @@ public class Accueil extends javax.swing.JFrame {
         producteur_ajouter = new javax.swing.JMenuItem();
         producteur_modifier = new javax.swing.JMenuItem();
         producteur_supprimer = new javax.swing.JMenuItem();
-        commandes = new javax.swing.JMenu();
-        commandes_consulter = new javax.swing.JMenuItem();
+        producteur_commandes = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,14 +88,15 @@ public class Accueil extends javax.swing.JFrame {
         });
         producteur.add(producteur_supprimer);
 
+        producteur_commandes.setText("Consulter les commandes en cours (au format XML)");
+        producteur_commandes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                producteur_commandesActionPerformed(evt);
+            }
+        });
+        producteur.add(producteur_commandes);
+
         Menu.add(producteur);
-
-        commandes.setText("Commandes");
-
-        commandes_consulter.setText("Consulter (format XML)");
-        commandes.add(commandes_consulter);
-
-        Menu.add(commandes);
 
         setJMenuBar(Menu);
 
@@ -145,6 +145,13 @@ public class Accueil extends javax.swing.JFrame {
         supprProd.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_producteur_supprimerActionPerformed
+
+    private void producteur_commandesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_producteur_commandesActionPerformed
+        ConsulterCommandes consulterCommandes = new ConsulterCommandes();
+        consulterCommandes.setTitle("Consulter les commandes en cours d'un producteur");
+        consulterCommandes.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_producteur_commandesActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -182,13 +189,12 @@ public class Accueil extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar Menu;
-    private javax.swing.JMenu commandes;
-    private javax.swing.JMenuItem commandes_consulter;
     private javax.swing.JMenu fichier;
     private javax.swing.JMenuItem fichier_deco;
     private javax.swing.JMenuItem fichier_fermer;
     private javax.swing.JMenu producteur;
     private javax.swing.JMenuItem producteur_ajouter;
+    private javax.swing.JMenuItem producteur_commandes;
     private javax.swing.JMenuItem producteur_modifier;
     private javax.swing.JMenuItem producteur_supprimer;
     // End of variables declaration//GEN-END:variables

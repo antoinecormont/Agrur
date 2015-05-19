@@ -14,29 +14,25 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import javax.xml.transform.TransformerException;
 
 /**
  *
- * @author sio
+ * @author Thibault
  */
-public class ConsulterCommandeProducteur extends javax.swing.JFrame {
+public class ConsulterCommandes extends javax.swing.JFrame {
 
     private PersistanceSQL bdd;
     private Connection connect;
     private BufferedWriter fw;
-    String log;
-
+    
     /**
-     * Creates new form ConsulterCommandeProducteur
+     * Creates new form ConsulterCommandes
      */
-    public ConsulterCommandeProducteur(String login) {
+    public ConsulterCommandes() {
         initComponents();
-        log = login;
     }
 
     /**
@@ -48,89 +44,60 @@ public class ConsulterCommandeProducteur extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        idProd = new javax.swing.JTextField();
         consulter = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        fermer = new javax.swing.JMenu();
-        fichier_retour = new javax.swing.JMenuItem();
-        fichier_deco = new javax.swing.JMenuItem();
-        fichier_fermer = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        consulter.setText("Consulter");
+        jLabel1.setText("Identifiant du producteur :");
+
+        idProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idProdActionPerformed(evt);
+            }
+        });
+
+        consulter.setText("Consulter les commandes");
         consulter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consulterActionPerformed(evt);
             }
         });
 
-        fermer.setText("Fichier");
-
-        fichier_retour.setText("Retour à l'accueil");
-        fichier_retour.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fichier_retourActionPerformed(evt);
-            }
-        });
-        fermer.add(fichier_retour);
-
-        fichier_deco.setText("Deconnexion");
-        fichier_deco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fichier_decoActionPerformed(evt);
-            }
-        });
-        fermer.add(fichier_deco);
-
-        fichier_fermer.setText("Fermer");
-        fichier_fermer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fichier_fermerActionPerformed(evt);
-            }
-        });
-        fermer.add(fichier_fermer);
-
-        jMenuBar1.add(fermer);
-
-        setJMenuBar(jMenuBar1);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(179, 179, 179)
+                .addGap(95, 95, 95)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(idProd, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(91, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(consulter)
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addGap(120, 120, 120))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(123, 123, 123)
+                .addGap(107, 107, 107)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(idProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(consulter)
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void fichier_retourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fichier_retourActionPerformed
-        AccueilProd accueil = new AccueilProd(log);
-        accueil.setTitle("Acceuil - " + log);
-        accueil.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_fichier_retourActionPerformed
-
-    private void fichier_decoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fichier_decoActionPerformed
-        Connexion fen = new Connexion();
-        fen.setTitle("Connexion");
-        fen.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_fichier_decoActionPerformed
-
-    private void fichier_fermerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fichier_fermerActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_fichier_fermerActionPerformed
+    private void idProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idProdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idProdActionPerformed
 
     private void consulterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consulterActionPerformed
         try {
@@ -138,6 +105,7 @@ public class ConsulterCommandeProducteur extends javax.swing.JFrame {
             Class.forName("org.gjt.mm.mysql.Driver");
             connect = DriverManager.getConnection("jdbc:mysql://localhost/gestcommande", "root", "");
 
+            String log = idProd.getText();
             String libRequete3 = "SELECT nomDistributeur FROM distributeur WHERE idDistributeur=?";
             PreparedStatement reqExe3 = connect.prepareStatement(libRequete3);
             reqExe3.setString(1, log);
@@ -182,10 +150,11 @@ public class ConsulterCommandeProducteur extends javax.swing.JFrame {
                     GestionCommandes gc = new GestionCommandes(bdd);
                     String chaine = gc.XmlNonLivrees(distributeur);
                     
-                    File fichier = new File("Commandes en cours - " + log +".txt");
+                    File fichier = new File("Commandes en cours du producteur " + log +".txt");
                     fw = new BufferedWriter(new FileWriter(fichier));
                     fw.write(chaine.replace("\n","\r\n"));
                     fw.close();
+                    //System.out.println(chaine);
                 }
             }
         } catch (IOException ex) {
@@ -216,30 +185,27 @@ public class ConsulterCommandeProducteur extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConsulterCommandeProducteur.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsulterCommandes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConsulterCommandeProducteur.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsulterCommandes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConsulterCommandeProducteur.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsulterCommandes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConsulterCommandeProducteur.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsulterCommandes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton consulter;
-    private javax.swing.JMenu fermer;
-    private javax.swing.JMenuItem fichier_deco;
-    private javax.swing.JMenuItem fichier_fermer;
-    private javax.swing.JMenuItem fichier_retour;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JTextField idProd;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
